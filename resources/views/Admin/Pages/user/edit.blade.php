@@ -1,5 +1,5 @@
 @extends('Admin.Layouts.master')
-@section('title', 'Add User')
+@section('title', 'Edit User')
 @section('content')
 
 <div class="container-fluid">
@@ -7,35 +7,36 @@
                 <div class="row">
                     <!------------------------------------- Add User Section ------------------------------------->
                     <div class="col-lg-10">
-                        <h3>Add User</h3>
+                        <h3>Edit User</h3>
                         <br>
                         <br>
-                        <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('user.update', $user->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name :</label>
-                                <input type="text" class="form-control" id="name" name="name">
+                                <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}">
                                 @if ($errors->has('name'))
                                     <span class="text-danger">{{ $errors->first('name') }}</span>
                                 @endif
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email :</label>
-                                <input type="text" class="form-control" id="email" name="email">
+                                <input type="text" class="form-control" id="email" name="email" value="{{ $user->email }}">
                                 @if ($errors->has('email'))
                                     <span class="text-danger">{{ $errors->first('email') }}</span>
                                 @endif
                             </div>
                             <div class="mb-3">
                                 <label for="mobile" class="form-label">Mobile :</label>
-                                <input type="text" class="form-control" id="mobile" name="mobile">
+                                <input type="text" class="form-control" id="mobile" name="mobile" value="{{ $user->mobile }}">
                                 @if ($errors->has('mobile'))
                                     <span class="text-danger">{{ $errors->first('mobile') }}</span>
                                 @endif
                             </div>
                             <div class="mb-3">
                                 <label for="address" class="form-label">Address :</label>
-                                <input type="text" class="form-control" id="address" name="address">
+                                <input type="text" class="form-control" id="address" name="address" value="{{ $user->address }}">
                                 @if ($errors->has('address'))
                                     <span class="text-danger">{{ $errors->first('address') }}</span>
                                 @endif

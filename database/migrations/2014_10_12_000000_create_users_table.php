@@ -17,7 +17,7 @@ return new class extends Migration
             $table->boolean('role');
             $table->bigInteger('mobile') ->nullable();
             $table->string('address') ->nullable();
-            $table->string('image')->nullable();
+            $table->string('image')->default('assets/images/defaultImage.png');
 
             $table->string('google_id')->nullable();
 

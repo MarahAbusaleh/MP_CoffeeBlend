@@ -19,14 +19,24 @@ class UserDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
-                $editBtn = "<a href='" . route('category.edit', $query->id) . "' class='btn btn-primary'><i class='far fa-edit'></i></a>";
-                $deleteBtn = "<a href='" . route('category.destroy', $query->id) . "' class='btn btn-danger my-2 delete-item'><i class='fas fa-trash-alt'></i></a>";
+                $editBtn = "<a href='" . route('user.edit', $query->id) . "' class='btn btn-success'><i class='far fa-edit'></i></a>";
+                $deleteBtn = "<a href='" . route('user.destroy', $query->id) . "' class='btn btn-danger my-2 delete-item'><i class='fas fa-trash-alt'></i></a>";
 
                 return $editBtn . $deleteBtn;
             })
             ->addColumn('image', function ($query) {
                 return "<img width='100px' src='" . asset($query->image) . "'></img>";
             })
+
+            ->addColumn('role', function ($query) {
+                if ($query->role == 0) {
+                    return "User";
+                }
+                else{
+                    return "Admin";
+                }
+            })
+
             ->rawColumns(['action', 'image'])
             ->setRowId('id');
     }
@@ -66,6 +76,7 @@ class UserDataTable extends DataTable
             Column::make('mobile'),
             Column::make('address'),
             Column::make('role'),
+            Column::make('image'),
             Column::computed('action')
                     ->exportable(false)
                     ->printable(false)
