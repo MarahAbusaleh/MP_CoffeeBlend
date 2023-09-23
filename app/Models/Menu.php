@@ -11,6 +11,14 @@ class Menu extends Model
 
     protected $table = "menus";
 
+    protected $fillable = [
+        'name',
+        'price',
+        'description',
+        'type',
+        'image'
+    ];
+
     //With OrderItem Model (1:M)
     public function orderItems()
     {
