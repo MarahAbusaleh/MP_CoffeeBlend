@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
@@ -20,8 +21,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('discount_id');
 
-            $table->timestamps();
-
+            $table->timestamps(); 
 
             $table->foreign('user_id')
                     ->references('id')
@@ -45,3 +45,5 @@ return new class extends Migration
         Schema::dropIfExists('orders');
     }
 };
+
+

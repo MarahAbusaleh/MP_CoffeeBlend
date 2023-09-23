@@ -8,11 +8,11 @@ return new class extends Migration
 {
     public function up()
     {
-
         Schema::create('discount', function (Blueprint $table) {
             $table->id();
             $table->string('discount_code');
             $table->float('discount_per');
+            $table->timestamps();
         });
     }
 
@@ -22,3 +22,5 @@ return new class extends Migration
         Schema::dropIfExists('discount');
     }
 };
+
+
