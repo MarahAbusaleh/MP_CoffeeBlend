@@ -48,3 +48,4 @@ Route::resource('user', UserController::class);
 Route::resource('order', OrderController::class);
 
 Route::resource('comment', CommentController::class);
+

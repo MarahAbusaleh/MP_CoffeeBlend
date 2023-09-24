@@ -19,14 +19,19 @@ class OrderDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
-                $editBtn = "<a href='" . route('category.edit', $query->id) . "' class='btn btn-primary'><i class='far fa-edit'></i></a>";
-                $deleteBtn = "<a href='" . route('category.destroy', $query->id) . "' class='btn btn-danger my-2 delete-item'><i class='fas fa-trash-alt'></i></a>";
+                $showBtn = "<a href='" . route('order.show', $query->id) . "' class='btn btn-muted my-2 show-item'><i class='fas fa-eye'></i></a>";
 
-                return $editBtn . $deleteBtn;
+                return $showBtn;
             })
-            ->addColumn('image', function ($query) {
-                return "<img width='100px' src='" . asset($query->image) . "'></img>";
+
+            ->addColumn('total', function ($query) {
+                return $query->cart->total;
             })
+
+            ->addColumn('user name', function ($query) {
+                return $query->user->name;
+            })
+
             ->rawColumns(['action', 'image'])
             ->setRowId('id');
     }
