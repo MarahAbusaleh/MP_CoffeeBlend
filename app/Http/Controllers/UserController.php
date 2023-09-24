@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\DataTables\UserDataTable;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use RealRashid\SweetAlert\Facades\Alert;
 class UserController extends Controller
 {
     public function index(UserDataTable $dataTables)
@@ -48,7 +48,8 @@ class UserController extends Controller
             'image' => $relativeImagePath
         ]);
 
-        return redirect()->route('user.index')->with('success', 'User Added successfully.');
+        Alert::success('success', 'User Added Successfully');
+        return redirect()->route('user.index');
     }
 
 
@@ -97,17 +98,21 @@ class UserController extends Controller
         }
 
         User::where('id', $id)->update($data);
+        Alert::success('success', 'User Updated Successfully');
 
-        return redirect()->route('user.index')->with('success', 'User updated successfully.');
+        return redirect()->route('user.index');
     }
 
 
     public function destroy($id)
     {
         // dd($id);
-        User::destroy($id);
+        // User::destroy($id);
         // dd($id);
 
-        return back()->with('success', 'User deleted successfully.');
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
 }

@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Coffee Blend - @yield('title')</title>
-    <link rel="shortcut icon" type="image/png" href="{{ asset('../assets/images/logos/SClogo.png') }}" />
-    <link rel="stylesheet" href="{{ asset('../assets/css/styles.min.css') }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logos/SClogo.png') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css') }}" />
     <link ret="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">

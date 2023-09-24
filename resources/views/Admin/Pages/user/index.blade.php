@@ -4,10 +4,10 @@
 
             <div class="container-fluid">
 
-                @if (session('success'))
+                {{-- @if (session('success'))
                     <div id="vola_message" class="alert alert-warning">{{ session('success') }}</div>
-                @endif
-
+                @endif --}}
+@include('sweetalert::alert')
                 <!--  Row 1 -->
                 <div class="row">
                     <h2>Users</h2>
