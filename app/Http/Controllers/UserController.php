@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\DataTables\UserDataTable;
 use App\Models\User;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+
 class UserController extends Controller
 {
     public function index(UserDataTable $dataTables)
@@ -35,8 +37,8 @@ class UserController extends Controller
             $newImageName1 = uniqid() . '-' . $request->input('name') . '.' . $request->file('image')->extension();
             $relativeImagePath = 'assets/images/' . $newImageName1;
             $request->file('image')->move(public_path('assets/images'), $newImageName1);
-        }else {
-            $relativeImagePath = 'assets/images/defaultImage.png'; 
+        } else {
+            $relativeImagePath = 'assets/images/defaultImage.png';
         }
 
         User::create([
@@ -87,13 +89,13 @@ class UserController extends Controller
             $data['image'] = $relativeImagePath;
         }
 
-        if($request->input('role') == null){
+        if ($request->input('role') == null) {
 
             $currentUser = User::find($id);
             if ($currentUser) {
                 $data['role'] = $currentUser->role;
             }
-        }else{
+        } else {
             $data['role'] = $request->input('role');
         }
 
@@ -106,10 +108,6 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        // dd($id);
-        // User::destroy($id);
-        // dd($id);
-
         $user = User::findOrFail($id);
         $user->delete();
 

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\DataTables\MenuDataTable;
 use App\Models\Menu;
 use Illuminate\Http\Request;
@@ -89,9 +90,9 @@ class MenuController extends Controller
 
     public function destroy($id)
     {
-        // dd('hiiii');
-        Menu::destroy($id);
+        $user = Menu::findOrFail($id);
+        $user->delete();
 
-        return back()->with('success', 'Item deleted successfully.');
+        return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
 }

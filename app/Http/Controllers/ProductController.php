@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\DataTables\ProductDataTable;
 use App\Models\Category;
 use App\Models\Product;
@@ -92,10 +93,9 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        // dd($id);
-        Product::destroy($id);
-        // dd($id);
+        $user = Product::findOrFail($id);
+        $user->delete();
 
-        return back()->with('success', 'Product deleted successfully.');
+        return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
 }

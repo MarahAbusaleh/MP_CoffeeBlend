@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\DataTables\CategoryDataTable;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -120,11 +121,9 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
-        // dd($id);
-        Category::destroy($id);
-        // dd($id);
+        $user = Category::findOrFail($id);
+        $user->delete();
 
-        return back()->with('success', 'Category deleted successfully.');
+        return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
-
 }

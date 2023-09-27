@@ -14,9 +14,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
-            $table->boolean('role')->default(0);
-            $table->bigInteger('mobile') ->nullable();
-            $table->string('address') ->nullable();
+            $table->enum('role', ['admin', 'user'])->default('user');
+            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->bigInteger('mobile')->nullable();
+            $table->string('address')->nullable();
             $table->string('image')->default('assets/images/defaultImage.png');
 
             $table->string('google_id')->nullable();

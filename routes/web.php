@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MenuController;
@@ -34,18 +35,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
 
+Route::get('/home', function () {
+    return view('Pages.Home.index');
+});
 
-Route::resource('category', CategoryController::class);
-
-Route::resource('product', ProductController::class);
-
-Route::resource('menu', MenuController::class);
-
-Route::resource('user', UserController::class);
-
-Route::resource('order', OrderController::class);
-
-Route::resource('comment', CommentController::class);
-
+require __DIR__ . '/auth.php';
