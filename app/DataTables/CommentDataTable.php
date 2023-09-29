@@ -14,50 +14,54 @@ use Yajra\DataTables\Services\DataTable;
 
 class CommentDataTable extends DataTable
 {
-    
+
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
-                $editBtn = "<a href='" . route('category.edit', $query->id) . "' class='btn btn-primary'><i class='far fa-edit'></i></a>";
-                $deleteBtn = "<a href='" . route('category.destroy', $query->id) . "' class='btn btn-danger my-2 delete-item'><i class='fas fa-trash-alt'></i></a>";
+                $deleteBtn = "<a href='" . route('comment.destroy', $query->id) . "' class='btn btn-danger my-2 delete-item'><i class='fas fa-trash-alt'></i></a>";
 
-                return $editBtn . $deleteBtn;
+                return $deleteBtn;
             })
-            ->addColumn('image', function ($query) {
-                return "<img width='100px' src='" . asset($query->image) . "'></img>";
+
+            ->addColumn('user image', function ($query) {
+                return "<img width='100px' src='" . asset($query->user->image) . "'/>";
             })
-            ->rawColumns(['action', 'image'])
+
+            ->addColumn('user name', function ($query) {
+                return $query->user->name;
+            })
+            ->rawColumns(['action', 'user image'])
             ->setRowId('id');
     }
 
-    
+
     public function query(Comment $model): QueryBuilder
     {
         return $model->newQuery();
     }
 
-    
+
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('comment-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    //->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->selectStyleSingle()
-                    ->buttons([
-                        Button::make('excel'),
-                        Button::make('csv'),
-                        Button::make('pdf'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    ]);
+            ->setTableId('comment-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            //->dom('Bfrtip')
+            ->orderBy(1)
+            ->selectStyleSingle()
+            ->buttons([
+                Button::make('excel'),
+                Button::make('csv'),
+                Button::make('pdf'),
+                Button::make('print'),
+                Button::make('reset'),
+                Button::make('reload')
+            ]);
     }
 
-    
+
     public function getColumns(): array
     {
         return [
@@ -65,14 +69,14 @@ class CommentDataTable extends DataTable
             Column::make('user name'),
             Column::make('comment'),
             Column::computed('action')
-                    ->exportable(false)
-                    ->printable(false)
-                    ->width(60)
-                    ->addClass('text-center'),
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
         ];
     }
 
-    
+
     protected function filename(): string
     {
         return 'Comment_' . date('YmdHis');

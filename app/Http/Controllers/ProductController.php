@@ -6,6 +6,7 @@ use App\DataTables\ProductDataTable;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
 {
@@ -48,7 +49,8 @@ class ProductController extends Controller
             'image' => $relativeImagePath,
         ]);
 
-        return redirect()->route('product.index')->with('success', 'Product created successfully.');
+        Alert::success('success', 'Product Added Successfully');
+        return redirect()->route('product.index');
     }
 
 
@@ -87,7 +89,8 @@ class ProductController extends Controller
 
         Product::where('id', $id)->update($data);
 
-        return redirect()->route('product.index')->with('success', 'Product updated successfully.');
+        Alert::success('success', 'Product Updated Successfully');
+        return redirect()->route('product.index');
     }
 
 

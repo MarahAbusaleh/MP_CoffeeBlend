@@ -16,27 +16,20 @@ return new class extends Migration
             $table->string('status');
 
             $table->unsignedBigInteger('user_id');
-            
-            $table->unsignedBigInteger('cart_id');
 
-            $table->unsignedBigInteger('discount_id');
+            $table->unsignedBigInteger('discount_id')->nullable();
 
-            $table->timestamps(); 
+            $table->timestamps();
 
             $table->foreign('user_id')
-                    ->references('id')
-                    ->on('users')
-                    ->onDelete('cascade');
-
-            $table->foreign('cart_id')
-                    ->references('id')
-                    ->on('carts')
-                    ->onDelete('cascade');
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
 
             $table->foreign('discount_id')
-                    ->references('id')
-                    ->on('discount')
-                    ->onDelete('cascade');
+                ->references('id')
+                ->on('discount')
+                ->onDelete('cascade');
         });
     }
 
@@ -45,5 +38,3 @@ return new class extends Migration
         Schema::dropIfExists('orders');
     }
 };
-
-

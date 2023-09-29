@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DataTables\CategoryDataTable;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoryController extends Controller
 {
@@ -59,7 +60,9 @@ class CategoryController extends Controller
             'image3' => $relativeImagePath3,
         ]);
 
-        return redirect()->route('category.index')->with('success', 'Category created successfully.');
+        Alert::success('success', 'Category Added Successfully');
+
+        return redirect()->route('category.index');
     }
 
 
@@ -115,7 +118,9 @@ class CategoryController extends Controller
 
         Category::where('id', $id)->update($data);
 
-        return redirect()->route('category.index')->with('success', 'Category updated successfully.');
+        Alert::success('success', 'Category Updated Successfully');
+
+        return redirect()->route('category.index');
     }
 
 

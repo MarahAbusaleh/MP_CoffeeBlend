@@ -41,12 +41,19 @@ class UserController extends Controller
             $relativeImagePath = 'assets/images/defaultImage.png';
         }
 
+        $roleval = '';
+        if ($request->input('role') == 0) {
+            $roleval = 'user';
+        } elseif ($request->input('role') == 1) {
+            $roleval = 'admin';
+        }
+
         User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'mobile' => $request->input('mobile'),
             'address' => $request->input('address'),
-            'role' => $request->input('role'),
+            'role' => $roleval,
             'image' => $relativeImagePath
         ]);
 
@@ -70,33 +77,21 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        //Data Validate
-        $request->validate([
-            'name' => ['max:20'],
-            'email' => ['email'],
-            'mobile' => ['string', 'regex:/^07\d{8}$/'],
-            'address' => ['string'],
-            'image' => ['image', 'max:4192'],
-        ]);
-
         $data = $request->except(['_token', '_method']);
-
-        $relativeImagePath = null;
-        if ($request->hasFile('image')) {
-            $newImageName = uniqid() . '-' . $request->input('name') . '.' . $request->file('image')->extension();
-            $relativeImagePath = 'assets/images/' . $newImageName;
-            $request->file('image')->move(public_path('assets/images'), $newImageName);
-            $data['image'] = $relativeImagePath;
-        }
 
         if ($request->input('role') == null) {
 
             $currentUser = User::find($id);
+
             if ($currentUser) {
                 $data['role'] = $currentUser->role;
             }
         } else {
-            $data['role'] = $request->input('role');
+            if ($request->input('role') == 0) {
+                $data['role'] = 'user';
+            } elseif ($request->input('role') == 1) {
+                $data['role'] = 'admin';
+            }
         }
 
         User::where('id', $id)->update($data);

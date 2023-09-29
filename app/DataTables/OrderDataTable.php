@@ -24,9 +24,9 @@ class OrderDataTable extends DataTable
                 return $showBtn;
             })
 
-            ->addColumn('total', function ($query) {
-                return $query->cart->total;
-            })
+            // ->addColumn('total', function ($query) {
+            //     return $query->cart->total;
+            // })
 
             ->addColumn('user name', function ($query) {
                 return $query->user->name;
@@ -46,20 +46,20 @@ class OrderDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('order-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    //->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->selectStyleSingle()
-                    ->buttons([
-                        Button::make('excel'),
-                        Button::make('csv'),
-                        Button::make('pdf'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    ]);
+            ->setTableId('order-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            //->dom('Bfrtip')
+            ->orderBy(1)
+            ->selectStyleSingle()
+            ->buttons([
+                Button::make('excel'),
+                Button::make('csv'),
+                Button::make('pdf'),
+                Button::make('print'),
+                Button::make('reset'),
+                Button::make('reload')
+            ]);
     }
 
 
@@ -69,13 +69,13 @@ class OrderDataTable extends DataTable
             Column::make('user name'),
             Column::make('address'),
             Column::make('date'),
-            Column::make('total'),
+            // Column::make('total'),
             Column::make('status'),
             Column::computed('action')
-                    ->exportable(false)
-                    ->printable(false)
-                    ->width(60)
-                    ->addClass('text-center'),
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
         ];
     }
 

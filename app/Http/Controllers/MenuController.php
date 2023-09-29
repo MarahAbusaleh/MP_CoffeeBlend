@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DataTables\MenuDataTable;
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class MenuController extends Controller
 {
@@ -45,7 +46,8 @@ class MenuController extends Controller
             'image' => $relativeImagePath,
         ]);
 
-        return redirect()->route('menu.index')->with('success', 'Item Added successfully.');
+        Alert::success('success', 'Item Added Successfully');
+        return redirect()->route('menu.index');
     }
 
 
@@ -84,7 +86,9 @@ class MenuController extends Controller
 
         Menu::where('id', $id)->update($data);
 
-        return redirect()->route('menu.index')->with('success', 'Item updated successfully.');
+        Alert::success('success', 'Item updated Successfully');
+
+        return redirect()->route('menu.index');
     }
 
 

@@ -34,4 +34,5 @@ Route::middleware(['admin', 'role:admin'])->group(function () {
     Route::resource('user', UserController::class);
 
     Route::resource('comment', CommentController::class);
+    Route::post('comment/export', 'CommentController@index');
 });

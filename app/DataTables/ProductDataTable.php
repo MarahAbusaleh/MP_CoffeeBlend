@@ -34,6 +34,10 @@ class ProductDataTable extends DataTable
                 }
             })
 
+            ->addColumn('price', function ($query) {
+                return $query->price . ' JOD';
+            })
+
             ->rawColumns(['action', 'image'])
             ->setRowId('id');
     }
@@ -48,20 +52,20 @@ class ProductDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('product-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    //->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->selectStyleSingle()
-                    ->buttons([
-                        Button::make('excel'),
-                        Button::make('csv'),
-                        Button::make('pdf'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    ]);
+            ->setTableId('product-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            //->dom('Bfrtip')
+            ->orderBy(1)
+            ->selectStyleSingle()
+            ->buttons([
+                Button::make('excel'),
+                Button::make('csv'),
+                Button::make('pdf'),
+                Button::make('print'),
+                Button::make('reset'),
+                Button::make('reload')
+            ]);
     }
 
 
@@ -74,10 +78,10 @@ class ProductDataTable extends DataTable
             Column::make('image'),
             Column::make('category'),
             Column::computed('action')
-                    ->exportable(false)
-                    ->printable(false)
-                    ->width(60)
-                    ->addClass('text-center'),
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
         ];
     }
 

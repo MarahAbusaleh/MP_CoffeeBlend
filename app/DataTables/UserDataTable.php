@@ -31,7 +31,7 @@ class UserDataTable extends DataTable
             ->addColumn('role', function ($query) {
                 if ($query->role == 'user') {
                     return "User";
-                } else {
+                } elseif ($query->role == 'admin') {
                     return "Admin";
                 }
             })
