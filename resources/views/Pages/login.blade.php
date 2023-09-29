@@ -45,10 +45,49 @@
     <!--//////////////////////////////////////////// END Of Nav ////////////////////////////////////////////-->
 
     <!------------------------------------------------- Login ------------------------------------------------->
-    <section class="ftco-counter ftco-bg-dark img" id="section-counter" style="background-image: url(images/bg_4.jpg)"
+    <section class="ftco-counter ftco-bg-dark img" id="section-counter"
+        style="background-image: url(images/bg.jpg); height: 100vh; background-position: center; background-size: cover; opacity: 0.7;"
         data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
-        <div class="container">
+        <div class="centered container">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <center><img src="images/logo.png" alt="Coffee Blend Logo" style="width: 50%;" class="col-md-10">
+                    </center>
+                    <form action="#" class="billing-form ftco-bg-dark p-3" style="background: none;">
+                        <center>
+                            <h3 class="mb-4 billing-heading" style="color: black">Login to Your Account</h3>
+                        </center>
+                        <div class="row align-items-end">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="country" style="color: black; font-size: 17px">Email/Name/Phone</label>
+                                    <input type="text" class="form-control2" placeholder="" />
+                                </div>
+                            </div>
+                            <div class="w-100"></div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="country" style="color: black; font-size: 17px">Password</label>
+                                    <input type="text" class="form-control2" placeholder="" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <center>
+                        <p>
+                            <a href="#" class="col-md-11 btn btn-primary py-3 px-4"
+                                style="font-size: 17px;">Login</a>
+                        </p>
+                        <p style=" text-align: center; color:black">
+                            Don't have an account? <a href="registration.html"
+                                style="text-decoration: underline; font-weight:bold">Register Now</a>
+                        </p>
+                    </center>
+                </div>
+            </div>
+        </div>
+        {{-- <div class="container" style="height: 70%; backgroung-color: white">
             <div class="row justify-content-center">
                 <div class="col-md-12">
                     <center><img src="images/logo.png" alt="Coffee Blend Logo" style="width: 50%;" class="col-md-10">
@@ -83,7 +122,7 @@
                     </center>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </section>
     <!--/////////////////////////////////////////// END Of Login ///////////////////////////////////////////-->
 

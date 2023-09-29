@@ -40,4 +40,8 @@ Route::get('/home', function () {
     return view('Pages.Home.index');
 });
 
+Route::get('/test', function () {
+    return view('Pages.login');
+});
+
 require __DIR__ . '/auth.php';

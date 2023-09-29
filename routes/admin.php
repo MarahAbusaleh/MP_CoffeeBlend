@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DiscountContoller;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -33,6 +34,8 @@ Route::middleware(['admin', 'role:admin'])->group(function () {
 
     Route::resource('user', UserController::class);
 
+    Route::resource('discount', DiscountContoller::class);
+
     Route::resource('comment', CommentController::class);
-    Route::post('comment/export', 'CommentController@index');
+    // Route::post('comment/export', 'CommentController@index');
 });

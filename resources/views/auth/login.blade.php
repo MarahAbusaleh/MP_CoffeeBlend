@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body style="overflow-y: hidden">
     <!----------------------------------------------- NavBar ----------------------------------------------->
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
@@ -48,24 +48,26 @@
 
     {{-- <x-guest-layout> --}}
     <!-- Session Status -->
-    <section class="ftco-counter ftco-bg-dark img" id="section-counter" style="background-image: url(images/bg_4.jpg)"
+    <section class="ftco-counter ftco-bg-dark img" id="section-counter" style="background-image: url(images/bg.jpg)"
         data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
-        <div class="container">
+        <div class="centered container">
             <div class="row justify-content-center">
                 <div class="col-md-12">
                     <center><img src="images/logo.png" alt="Coffee Blend Logo" style="width: 50%;" class="col-md-10">
                     </center>
                     <x-auth-session-status class="mb-4" :status="session('status')" />
-                    <h3 class="mb-4 billing-heading">Login to Your Account</h3>
+                    <center>
+                        <h3 class="mb-4 billing-heading" style="color: black">Login to Your Account</h3>
+                    </center>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <!-- Email Address -->
                         <div class="mt-4 col-md-12">
                             <div class="form-group">
-                                <x-input-label for="login" :value="__('Email/Name/Phone')" />
-                                <x-text-input id="login" class="form-control block mt-1 w-full" type="text"
+                                <x-input-label for="login" :value="__('Email/Name/Phone')" style="color: black; font-size: 17px" />
+                                <x-text-input id="login" class="form-control2 block mt-1 w-full" type="text"
                                     name="login" :value="old('login')" required autofocus autocomplete="username" />
                                 <x-input-error :messages="$errors->get('login')" class="mt-2" />
                             </div>
@@ -74,27 +76,26 @@
                         <!-- Password -->
                         <div class="mt-4 col-md-12">
                             <div class="form-group">
-                                <x-input-label for="password" :value="__('Password')" />
-
-                                <x-text-input id="password" class="block mt-1 w-full form-control" type="password"
+                                <x-input-label for="password" :value="__('Password')" style="color: black; font-size: 17px" />
+                                <x-text-input id="password" class="block mt-1 w-full form-control2" type="password"
                                     name="password" required autocomplete="current-password" />
-
                                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
                             </div>
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
                             @if (Route::has('password.request'))
-                                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-                                    href="{{ route('password.request') }}">
-                                    {{ __('Forgot your password?') }}
-                                </a>
+                                <center><a href="{{ route('password.request') }}">
+                                        {{ __('Forgot your password?') }}
+                                    </a></center><br>
                             @endif
 
-                            <x-primary-button class="ml-3 col-md-11 btn btn-primary py-3 px-4">
-                                {{ __('Log in') }}
-                            </x-primary-button>
-                            <p style=" text-align: center;">
+                            <center>
+                                <x-primary-button class="col-md-10 btn btn-primary py-3 px-4" style="font-size: 17px;">
+                                    {{ __('Log in') }}
+                                </x-primary-button>
+                            </center>
+                            <p style=" text-align: center; color:black">
                                 Don't have an account? <a href="{{ route('register') }}"
                                     style="text-decoration: underline;">Register Now</a>
                             </p>

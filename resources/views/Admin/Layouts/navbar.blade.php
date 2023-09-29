@@ -85,19 +85,19 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ route('order.index') }}" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-list"></i>
+                                    <i class="ti ti-basket"></i>
                                 </span>
                                 <span class="hide-menu">Orders</span>
                             </a>
                         </li>
-                        {{-- <li class="sidebar-item">
-                <a class="sidebar-link" href="./admins.html" aria-expanded="false">
-                    <span>
-                    <i class="ti ti-user"></i>
-                    </span>
-                    <span class="hide-menu">Admins</span>
-                </a>
-                </li> --}}
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ route('discount.index') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-discount-off"></i>
+                                </span>
+                                <span class="hide-menu">Discount Codes</span>
+                            </a>
+                        </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ route('comment.index') }}" aria-expanded="false">
                                 <span>
@@ -106,14 +106,6 @@
                                 <span class="hide-menu">Comments</span>
                             </a>
                         </li>
-                        {{-- <li class="sidebar-item">
-                <a class="sidebar-link" href="" aria-expanded="false">
-                    <span>
-                    <i class="ti ti-message-2"></i>
-                    </span>
-                    <span class="hide-menu">Contact</span>
-                </a>
-                </li>             --}}
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
