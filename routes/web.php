@@ -1,13 +1,8 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\CommentController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,10 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -35,13 +26,28 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+//My Routes
 
-Route::get('/home', function () {
-    return view('Pages.Home.index');
+Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/menupage', [MenuController::class, 'show']);
+
+Route::get('/services', function () {
+    return view('Pages.services');
 });
 
-Route::get('/test', function () {
-    return view('Pages.login');
+Route::get('/shop', function () {
+    return view('Pages.shop');
 });
+
+Route::get('/about', function () {
+    return view('Pages.about');
+});
+
+Route::get('/contact', function () {
+    return view('Pages.contact');
+});
+
+
 
 require __DIR__ . '/auth.php';

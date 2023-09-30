@@ -108,7 +108,8 @@
                         <div class="flex items-center justify-end mt-4">
 
                             <center>
-                                <x-primary-button class="col-md-10 btn btn-primary py-3 px-4">
+                                <x-primary-button class="col-md-10 btn btn-primary py-3 px-4"
+                                    style="font-size: 17px;">
                                     {{ __('Register') }}
                                 </x-primary-button>
                             </center>

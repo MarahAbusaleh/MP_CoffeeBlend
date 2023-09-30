@@ -7,7 +7,7 @@ use App\Models\Discount;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class DiscountContoller extends Controller
+class DiscountController extends Controller
 {
     public function index(DiscountDataTable $dataTables)
     {

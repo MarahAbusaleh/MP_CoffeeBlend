@@ -14,6 +14,7 @@ class MenuController extends Controller
         return $dataTables->render('Admin.Pages.menu.index');
     }
 
+
     public function create()
     {
         return view('Admin.Pages.menu.create');
@@ -53,7 +54,9 @@ class MenuController extends Controller
 
     public function show(Menu $menu)
     {
-        //
+        $hotDrinks = Menu::where('type', 'hot')->get();
+        $coldDrinks = Menu::where('type', 'cold')->get();
+        return view('Pages.menu', compact('hotDrinks', 'coldDrinks'));
     }
 
 
