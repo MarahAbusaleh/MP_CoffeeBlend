@@ -69,7 +69,8 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
-        //
+        $categories = Category::all();
+        return view('Pages.shop', compact('categories'));
     }
 
 

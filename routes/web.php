@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProfileController;
@@ -36,9 +37,7 @@ Route::get('/services', function () {
     return view('Pages.services');
 });
 
-Route::get('/shop', function () {
-    return view('Pages.shop');
-});
+Route::get('/shop', [CategoryController::class, 'show']);
 
 Route::get('/about', function () {
     return view('Pages.about');

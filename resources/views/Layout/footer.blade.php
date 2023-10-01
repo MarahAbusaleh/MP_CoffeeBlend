@@ -72,6 +72,59 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="js/google-map.js"></script>
 <script src="js/main.js"></script>
+{{-- <script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/main2.js"></script> --}}
+<script>
+    $(document).ready(function() {
+
+
+        if ($('.bbb_viewed_slider').length) {
+            var viewedSlider = $('.bbb_viewed_slider');
+
+            viewedSlider.owlCarousel({
+                loop: true,
+                margin: 30,
+                autoplay: true,
+                autoplayTimeout: 6000,
+                nav: false,
+                dots: false,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    575: {
+                        items: 2
+                    },
+                    768: {
+                        items: 3
+                    },
+                    991: {
+                        items: 4
+                    },
+                    1199: {
+                        items: 6
+                    }
+                }
+            });
+
+            if ($('.bbb_viewed_prev').length) {
+                var prev = $('.bbb_viewed_prev');
+                prev.on('click', function() {
+                    viewedSlider.trigger('prev.owl.carousel');
+                });
+            }
+
+            if ($('.bbb_viewed_next').length) {
+                var next = $('.bbb_viewed_next');
+                next.on('click', function() {
+                    viewedSlider.trigger('next.owl.carousel');
+                });
+            }
+        }
+
+
+    });
+</script>
 <script>
     $(document).ready(function() {
         var quantitiy = 0;
