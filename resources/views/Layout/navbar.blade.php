@@ -111,7 +111,7 @@
                                                 <i class="ti ti-user fs-6"></i>
                                                 <p class="mb-0 fs-3">{{ Auth::user()->name }}</p>
                                             </a>
-                                            <a href="{{ url('profile') }}"
+                                            <a href="{{ url('myProfile') }}"
                                                 class="d-flex align-items-center gap-2 dropdown-item">
                                                 <i class="ti ti-user fs-6"></i>
                                                 <p class="mb-0 fs-3">My Profile</p>

@@ -14,6 +14,13 @@ class UserController extends Controller
         return $dataTables->render('Admin.Pages.user.index');
     }
 
+
+    public function myProfile()
+    {
+        return view('Pages.user-profile');
+    }
+
+
     public function create()
     {
         return view('Admin.Pages.user.create');
