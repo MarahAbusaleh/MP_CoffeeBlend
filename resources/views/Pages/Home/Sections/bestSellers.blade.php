@@ -20,7 +20,9 @@
                             </p>
                             <p class="price"><span>{{ $Item->price }} JOD</span></p>
                             <p>
-                                <a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a>
+                                <a href="{{ route('addItemToCart', $Item->id) }}"
+                                    class="btn btn-primary btn-outline-primary">Add to
+                                    Cart</a>
                             </p>
                         </div>
                     </div>

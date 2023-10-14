@@ -27,7 +27,7 @@ class ProductController extends Controller
     {
         // Data Validate
         $request->validate([
-            'name' => ['required', 'max:20'],
+            'name' => ['required', 'max:40'],
             'price' => ['required', 'numeric', 'min:0'],
             'description' => ['required', 'string'],
             'category' => ['required'],
@@ -54,9 +54,11 @@ class ProductController extends Controller
     }
 
 
-    public function show(Product $product)
+    public function show($category_id, $product_id)
     {
-        //
+        $product = Product::find($product_id);
+        $Items = Product::where('category_id', $category_id)->inRandomOrder()->take(4)->get();
+        return view('Pages.product-single2', compact('product', 'Items'));
     }
 
 

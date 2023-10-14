@@ -11,8 +11,16 @@ class Order extends Model
 
     protected $table = "orders";
 
+    protected $fillable = [
+        'address',
+        'date',
+        'status',
+        'user_id',
+        'total'
+    ];
+
     //With User Model (M:1)
-    public function user() 
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
@@ -24,13 +32,13 @@ class Order extends Model
     }
 
     //With Discount Model (M:1)
-    public function discount() 
+    public function discount()
     {
         return $this->belongsTo(Discount::class);
     }
 
     //With Cart Model (1:1)
-    public function cart() 
+    public function cart()
     {
         return $this->belongsTo(Cart::class);
     }

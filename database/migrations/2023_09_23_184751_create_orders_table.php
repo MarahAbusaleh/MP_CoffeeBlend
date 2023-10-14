@@ -14,6 +14,7 @@ return new class extends Migration
             $table->string('address');
             $table->date('date');
             $table->string('status');
+            $table->float('total');
 
             $table->unsignedBigInteger('user_id');
 

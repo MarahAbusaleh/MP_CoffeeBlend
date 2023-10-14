@@ -2,6 +2,8 @@
 @section('title', 'Coffee Blend')
 @section('content')
 
+    @include('sweetalert::alert')
+
     <!----------------------------------------------- Header ----------------------------------------------->
 
     @include('Pages.Home.Sections.header')

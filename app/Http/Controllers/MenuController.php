@@ -59,6 +59,13 @@ class MenuController extends Controller
         return view('Pages.menu', compact('hotDrinks', 'coldDrinks'));
     }
 
+    public function itemDetails($id)
+    {
+        $Item = Menu::find($id);
+        $Items = Menu::inRandomOrder()->take(4)->get();
+        return view('Pages.product-single', compact('Item', 'Items'));
+    }
+
 
     public function edit($id)
     {

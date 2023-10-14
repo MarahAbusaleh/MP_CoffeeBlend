@@ -214,6 +214,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Datatables'    => Yajra\DataTables\Facades\DataTables::class,
+        'Cart' =>  Gloudemans\Shoppingcart\Facades\Cart::class,
     ])->toArray(),
 
 ];

@@ -13,23 +13,26 @@ class OrderItem extends Model
 
     protected $fillable = [
         'quantity',
-        'price'
+        'price',
+        'order_id',
+        'product_id',
+        'menu_id'
     ];
 
     //With Product Model (M:1)
-    public function product() 
+    public function product()
     {
         return $this->belongsTo(Product::class);
     }
 
     //With Menu Model (M:1)
-    public function menu() 
+    public function menu()
     {
         return $this->belongsTo(Menu::class);
     }
 
     //With Order Model (M:1)
-    public function order() 
+    public function order()
     {
         return $this->belongsTo(Order::class);
     }

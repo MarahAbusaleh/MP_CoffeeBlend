@@ -21,66 +21,54 @@
             </div>
         </div>
     </section>
-    
+
     <!--///////////////////////////////////////// END Of Header //////////////////////////////////////////-->
 
-    
+
     <!------------------------------------------- Payment Section ------------------------------------------->
 
     <section class="ftco-section">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12 ftco-animate">
-                    <form action="#" class="col-lg-12 billing-form ftco-bg-dark p-3 p-md-5">
+                    @include('sweetalert::alert')
+                    <form action="{{ route('submitCheckout') }}" method="POST"
+                        class="col-lg-12 billing-form ftco-bg-dark p-3 p-md-5">
+                        @csrf
                         <h3 class="mb-4 billing-heading">Payment Details</h3>
                         <div class="row align-items-end">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="firstname">Firt Name</label>
-                                    <input type="text" class="form-control" placeholder="" />
+                                    <input type="text" class="form-control" placeholder=""
+                                        value="{{ Auth::user()->name }}" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="lastname">Last Name</label>
-                                    <input type="text" class="form-control" placeholder="" />
-                                </div>
-                            </div>
-                            <div class="w-100"></div>
-                            <div class="col-md-12">
-                                <div class="form-group">
                                     <label for="country">Email Address</label>
-                                    <input type="text" class="form-control" placeholder="" />
-                                </div>
-                            </div>
-                            <div class="w-100"></div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="country">State / Country</label>
-                                    <input type="text" class="form-control" placeholder="" />
+                                    <input type="text" class="form-control" placeholder=""
+                                        value="{{ Auth::user()->email }}" />
                                 </div>
                             </div>
                             <div class="w-100"></div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="country">Phone Number</label>
-                                    <input type="text" class="form-control" placeholder="" />
+                                    <input type="text" class="form-control" placeholder="" name="mobile"
+                                        value="{{ Auth::user()->mobile }}" required />
                                 </div>
                             </div>
-                            <div class="w-100"></div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="streetaddress">Street Address</label>
-                                    <input type="text" class="form-control" placeholder="House number and street name"/>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Appartment, suite, unit etc: (optional)"/>
-                                </div>
-                            </div>                
                             <div class="w-100"></div>
                             <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="streetaddress">Address</label>
+                                    <input type="text" class="form-control" placeholder="" name="address"
+                                        value="{{ Auth::user()->address }}" required />
+                                </div>
+                            </div>
+                            <div class="w-100"></div>
+                            {{-- <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="country">Card Number</label>
                                     <input type="text" class="form-control" placeholder="" />
@@ -98,46 +86,48 @@
                                     <label for="emailaddress">MM/YY</label>
                                     <input type="text" class="form-control" placeholder="" />
                                 </div>
+                            </div> --}}
+                        </div>
+
+                        <!-- END -->
+
+                        <div class="row mt-5 pt-3 d-flex">
+                            <div class="col-md-12 d-flex">
+                                <div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
+                                    <h3 class="billing-heading mb-4">Cart Total</h3>
+                                    <p class="d-flex">
+                                        <span>Subtotal</span>
+                                        <span></span>
+                                        <span></span>
+                                        <span>{{ Cart::subtotal() }} JOD</span>
+                                    </p>
+                                    <p class="d-flex">
+                                        <span>Delivery</span>
+                                        <span></span>
+                                        <span></span>
+                                        <span> JOD</span>
+                                    </p>
+                                    <p class="d-flex">
+                                        <span>Discount</span>
+                                        <span></span>
+                                        <span></span>
+                                        <span> JOD</span>
+                                    </p>
+                                    <hr />
+                                    <p class="d-flex total-price">
+                                        <span>Total</span>
+                                        <span></span>
+                                        <span></span>
+                                        <span>{{ Cart::subtotal() }} JOD</span>
+                                    </p>
+                                    <p>
+                                        <button href="" class="btn btn-primary py-3 px-4" type="submit">Place an
+                                            order</button>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </form>
-                    <!-- END -->
-
-                    <div class="row mt-5 pt-3 d-flex">
-                        <div class="col-md-12 d-flex">
-                            <div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
-                                <h3 class="billing-heading mb-4">Cart Total</h3>
-                                <p class="d-flex">
-                                    <span>Subtotal</span>
-                                    <span></span>
-                                    <span></span>
-                                    <span>4 JOD</span>
-                                </p>
-                                <p class="d-flex">
-                                    <span>Delivery</span>
-                                    <span></span>
-                                    <span></span>
-                                    <span>1.5 JOD</span>
-                                </p>
-                                <p class="d-flex">
-                                    <span>Discount</span>
-                                    <span></span>
-                                    <span></span>
-                                    <span>0.5 JOD</span>
-                                </p>
-                                <hr />
-                                <p class="d-flex total-price">
-                                    <span>Total</span>
-                                    <span></span>
-                                    <span></span>
-                                    <span>5 JOD</span>
-                                </p>
-                                <p>
-                                    <a href="#" class="btn btn-primary py-3 px-4">Place an order</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- .col-md-8 -->
             </div>

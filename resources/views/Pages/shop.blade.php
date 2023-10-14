@@ -25,41 +25,30 @@
 
     <section class="ftco-menu mb-5 pb-5">
         <div class="container">
-            <div class="row d-md-flex">
-                <div class="col-lg-12 ftco-animate p-md-5">
-                    <div class="row">
-                        <div class="col-md-12  align-items-center">
-                            <div class="tab-content ftco-animate" id="v-pills-tabContent">
-                                <div class="container tab-pane fade show active" id="v-pills-0" role="tabpanel"
-                                    aria-labelledby="v-pills-0-tab">
-                                    <div class="row" style="flex-wrap: nowrap; margin-right: 100px;">
-                                        @foreach ($categories as $category)
-                                            <div class="col-md-4"
-                                                style="border: 1px solid gray; margin: 20px; padding: 10px;">
-                                                <div class="menu-entry">
-                                                    <div class="text text-center pt-4">
-                                                        <div class="contimg">
-                                                            <div class="containerimg">
-                                                                <img src="{{ asset($category->image1) }}" alt="Image 1"
-                                                                    class="shopimg">
-                                                                <img src="{{ asset($category->image2) }}" alt="Image 2"
-                                                                    class="shopimg">
-                                                                <img src="{{ asset($category->image3) }}" alt="Image 3"
-                                                                    class="shopimg">
-                                                            </div>
-                                                        </div>
-                                                        <p style="margin-top: 120px;"><a href="subcategories.html"
-                                                                class="btn btn-primary"
-                                                                style="height: fit-content; width: fit-content; font-size: 15px;">{{ $category->name }}</a>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endforeach
-
+            <div class="row" style=" margin-right: 0px;">
+                @foreach ($categories as $category)
+                    <div class="col-lg-4" style="border: 1px solid gray; margin: 0px;">
+                        <div class="">
+                            <div class="text text-center pt-4">
+                                <div class="contimg">
+                                    <div class="containerimg">
+                                        <img src="{{ asset($category->image1) }}" alt="Image 1" class="shopimg">
+                                        <img src="{{ asset($category->image2) }}" alt="Image 2" class="shopimg">
+                                        <img src="{{ asset($category->image3) }}" alt="Image 3" class="shopimg">
                                     </div>
+                                </div>
+                                <p style="margin-top: 120px;"><a href="{{ route('showProducts', $category->id) }}"
+                                        class="btn btn-primary"
+                                        style="height: fit-content; width: fit-content; font-size: 15px;">{{ $category->name }}</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
 
-                                    {{-- <div class="row" style="flex-wrap: nowrap; margin-right: 100px;">
+            </div>
+
+            {{-- <div class="row" style="flex-wrap: nowrap; margin-right: 100px;">
                                         <div class="col-md-4" style="border: 1px solid gray; margin: 20px; padding: 10px;">
                                             <div class="menu-entry">
                                                 <div class="text text-center pt-4">
@@ -79,12 +68,7 @@
                                         </div>
                                         
                                     </div> --}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </section>
 

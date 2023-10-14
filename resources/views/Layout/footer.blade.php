@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="footer-col col-lg-3 col-md-4 col-sm-6">
-                <img class="imgfoot" src="./images/footerimage.png" alt="">
+                <img class="imgfoot" src="{{ asset('./images/footerimage.png') }}" alt="">
             </div>
         </div>
     </div>
@@ -55,25 +55,29 @@
 </div>
 
 <!----------------------------------------------- Script ----------------------------------------------->
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery-migrate-3.0.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.easing.1.3.js"></script>
-<script src="js/jquery.waypoints.min.js"></script>
-<script src="js/jquery.stellar.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/aos.js"></script>
-<script src="js/jquery.animateNumber.min.js"></script>
-<script src="js/bootstrap-datepicker.js"></script>
-<script src="js/jquery.timepicker.min.js"></script>
-<script src="js/scrollax.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script src="js/google-map.js"></script>
-<script src="js/main.js"></script>
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
+<script src="{{ asset('js/popper.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
+<script src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
+<script src="{{ asset('js/jquery.stellar.min.js') }}"></script>
+<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ asset('js/aos.js') }}"></script>
+<script src="{{ asset('js/jquery.animateNumber.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+<script src="{{ asset('js/jquery.timepicker.min.js') }}"></script>
+<script src="{{ asset('js/scrollax.min.js') }}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&sensor=false"></script>
+<script src="{{ asset('js/google-map.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
+
 {{-- <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/main2.js"></script> --}}
+
+
+
 <script>
     $(document).ready(function() {
 

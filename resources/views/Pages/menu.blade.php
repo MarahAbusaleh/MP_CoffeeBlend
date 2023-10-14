@@ -33,7 +33,10 @@
                         <h3 class="col-md-12 heading-pricing ftco-animate">Hot Drinks</h3><br>
                         @foreach ($hotDrinks as $hot)
                             <div class="col-md-6 pricing-entry d-flex ftco-animate">
-                                <div class="img" style="background-image: url({{ asset($hot->image) }});"></div>
+                                <a href="{{ route('itemDetails', $hot->id) }}">
+                                    <div class="img" style="background-image: url({{ asset($hot->image) }});"></div>
+                                </a>
+
                                 <div class="desc pl-3">
                                     <div class="d-flex text align-items-center">
                                         <h3><span>{{ $hot->name }}</span></h3>
@@ -52,7 +55,10 @@
                         <h3 class="col-md-12 heading-pricing ftco-animate">Cold Drinks</h3><br>
                         @foreach ($coldDrinks as $cold)
                             <div class="col-md-6 pricing-entry d-flex ftco-animate">
-                                <div class="img" style="background-image: url({{ asset($cold->image) }});"></div>
+                                <a href="{{ route('itemDetails', $cold->id) }}">
+                                    <div class="img" style="background-image: url({{ asset($cold->image) }});"></div>
+                                </a>
+
                                 <div class="desc pl-3">
                                     <div class="d-flex text align-items-center">
                                         <h3><span>{{ $cold->name }}</span></h3>

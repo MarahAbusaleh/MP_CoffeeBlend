@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DataTables\CategoryDataTable;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -71,6 +72,14 @@ class CategoryController extends Controller
     {
         $categories = Category::all();
         return view('Pages.shop', compact('categories'));
+    }
+
+
+    public function showProducts($id)
+    {
+        $categories = Category::all();
+        $products = Product::where('category_id', $id)->get();
+        return view('Pages.subcategories', compact('categories', 'products'));
     }
 
 
