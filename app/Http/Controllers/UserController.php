@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\UserDataTable;
+use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
@@ -17,7 +21,48 @@ class UserController extends Controller
 
     public function myProfile()
     {
-        return view('Pages.user-profile');
+        $orders = Order::where('user_id', Auth::user()->id)->get();
+        return view('Pages.user-profile', compact('orders'));
+    }
+
+
+    public function editMyProfile(Request $request)
+    {
+        // Data Validate
+        $request->validate([
+            'name' => ['required', 'max:20'],
+            'email' => ['required', 'email'],
+            'mobile' => ['required', 'string', 'regex:/^07\d{8}$/'],
+            'address' => ['required', 'string'],
+            'image' => [''],
+        ]);
+
+        $data = $request->except(['_token', '_method']);
+
+        $relativeImagePath = null;
+        if ($request->file('image')) {
+            $newImageName = uniqid() . '-' . $request->input('name') . '.' . $request->file('image')->extension();
+            $relativeImagePath = 'images/' . $newImageName;
+            $request->file('image')->move(public_path('images'), $newImageName);
+            $data['image'] = $relativeImagePath;
+        } else {
+            dd($data);
+        }
+
+
+
+        User::where('id', Auth::user()->id)->update($data);
+        Alert::success('success', 'Your Information Updated Successfully');
+
+        return redirect()->back();
+    }
+
+
+    public function myOrders($id)
+    {
+        $orderdetails = OrderItem::where('order_id', $id)->get();
+        $orderTotal = OrderItem::where('order_id', $id)->sum(DB::raw('quantity * price'));
+        return view('Pages.order-detalis', compact('orderdetails', 'orderTotal'));
     }
 
 
@@ -48,11 +93,11 @@ class UserController extends Controller
             $relativeImagePath = 'assets/images/defaultImage.png';
         }
 
-        $roleval = '';
+        $roleValue = '';
         if ($request->input('role') == 0) {
-            $roleval = 'user';
+            $roleValue = 'user';
         } elseif ($request->input('role') == 1) {
-            $roleval = 'admin';
+            $roleValue = 'admin';
         }
 
         User::create([
@@ -60,7 +105,7 @@ class UserController extends Controller
             'email' => $request->input('email'),
             'mobile' => $request->input('mobile'),
             'address' => $request->input('address'),
-            'role' => $roleval,
+            'role' => $roleValue,
             'image' => $relativeImagePath
         ]);
 

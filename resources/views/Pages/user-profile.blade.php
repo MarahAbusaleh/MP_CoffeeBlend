@@ -28,43 +28,69 @@
             <div class="row">
                 <div class="col-lg-4 col-md-3">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                        <img class="rounded-circle" width="300px" src="{{ asset(Auth::user()->image) }}">
+                        <img id="showImage" class="rounded-circle" width="300px" src="{{ asset(Auth::user()->image) }}">
                     </div>
                 </div>
+                @include('sweetalert::alert')
+
                 <div class="col-lg-8 col-md-5">
-                    <div class="p-3 py-5">
-                        <div class="row mt-2">
-                            <div class="col-md-12">
-                                <label class="labels">Name</label>
-                                <input type="text" class="form-control" placeholder="" name="name"
-                                    value="{{ Auth::user()->name }}">
+                    <form action="{{ route('editMyProfile') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        {{-- @method('PUT') --}}
+                        <div class="p-3 py-5">
+                            <div class="row mt-2">
+                                <div class="col-md-12">
+                                    <label class="labels">Name</label>
+                                    <input type="text" class="form-control" placeholder="" name="name"
+                                        value="{{ Auth::user()->name }}">
+                                    @if ($errors->has('name'))
+                                        <span class="text-danger">{{ $errors->first('name') }}</span>
+                                    @endif
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="labels">Email</label>
+                                    <input type="text" class="form-control" placeholder="" name="email"
+                                        value="{{ Auth::user()->email }}">
+                                    @if ($errors->has('email'))
+                                        <span class="text-danger">{{ $errors->first('email') }}</span>
+                                    @endif
+                                </div>
                             </div>
-                            <div class="col-md-12">
-                                <label class="labels">Email</label>
-                                <input type="text" class="form-control" placeholder="" name="email"
-                                    value="{{ Auth::user()->email }}">
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label class="labels">Address</label>
+                                    <input type="text" class="form-control" name="address"
+                                        value="{{ Auth::user()->address }}" placeholder="Enter Your Address">
+                                    @if ($errors->has('address'))
+                                        <span class="text-danger">{{ $errors->first('address') }}</span>
+                                    @endif
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="labels">Mobile Number</label>
+                                    <input type="text" class="form-control" placeholder="Enter Your Phone Number"
+                                        name="mobile" value="{{ Auth::user()->mobile }}">
+                                    @if ($errors->has('mobile'))
+                                        <span class="text-danger">{{ $errors->first('mobile') }}</span>
+                                    @endif
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="labels">Image</label>
+                                    <input type="file" class="form-control" name="image" id="image">
+                                    @if ($errors->has('image'))
+                                        <span class="text-danger">{{ $errors->first('image') }}</span>
+                                    @endif
+                                </div>
                             </div>
+                            <br><br>
+                            <center>
+                                <div>
+                                    <button type="submit" href="#" class="btn btn-primary py-3 px-4"
+                                        style="color: black !important">Save
+                                        Profile</button>
+                                </div>
+                            </center>
                         </div>
-                        <div class="row mt-3">
-                            <div class="col-md-6">
-                                <label class="labels">Address</label>
-                                <input type="text" class="form-control" name="address"
-                                    value="{{ Auth::user()->address }}" placeholder="Enter Your Address">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="labels">Mobile Number</label>
-                                <input type="text" class="form-control" placeholder="Enter Your Phone Number"
-                                    name="mobile" value="{{ Auth::user()->mobile }}">
-                            </div>
-                        </div>
-                        <br><br>
-                        <center>
-                            <div>
-                                <p class="col-lg-4 text-center"><a href="#" class="btn btn-primary py-3 px-4">Save
-                                        Profile</a></p>
-                            </div>
-                        </center>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -86,19 +112,27 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Irbid</td>
-                                <td>Done</td>
-                                <td>23.0 JOD</td>
-                                <td>
-                                    <a href="order-detalis.html" class="nav-link">
-                                        <span class="icon icon-list"></span>
-                                        <span
-                                            class=" d-flex justify-content-center align-items-center"><small></small></span>
-                                    </a>
-                                </td>
-                            </tr>
+                            @php
+                                $i = 1;
+                            @endphp
+                            @foreach ($orders as $order)
+                                <tr>
+                                    <td>{{ $i }}</td>
+                                    <td>{{ $order->address }}</td>
+                                    <td>{{ $order->status }}</td>
+                                    <td>{{ $order->total }}</td>
+                                    <td>
+                                        <a href="{{ route('myOrders', $order->id) }}" class="nav-link">
+                                            <span class="icon icon-list"></span>
+                                            <span
+                                                class=" d-flex justify-content-center align-items-center"><small></small></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                                @php
+                                    $i++;
+                                @endphp
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -108,5 +142,7 @@
 
     <!--/////////////////////////////////////// END Of User Profile //////////////////////////////////////-->
     <hr style="border-top: 1px solid gray;">
+
+
 
 @endsection

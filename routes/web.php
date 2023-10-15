@@ -37,6 +37,8 @@ Route::middleware('auth')->group(function () {
 
     /*--------------------------------------- USER PROFILE ---------------------------------------- */
     Route::get('/myProfile', [UserController::class, 'myProfile'])->name('myProfile');
+    Route::post('/editMyProfile', [UserController::class, 'editMyProfile'])->name('editMyProfile');
+    Route::get('/myOrders/{id}', [UserController::class, 'myOrders'])->name('myOrders');
     /*----------------------------------- END USER PROFILE ---------------------------------------- */
 });
 

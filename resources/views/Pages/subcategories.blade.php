@@ -58,7 +58,7 @@
                                             <div class="col-lg-4 col-md-6 text-center">
                                                 <div class="menu-wrap">
 
-                                                    <img src="{{ asset($product->image) }}" class="menu-img img">
+                                                    {{-- <img src="{{ asset($product->image) }}" class="menu-img img"> --}}
                                                     <a href="{{ route('productDetails', [$product->category_id, $product->id]) }}"
                                                         class="menu-img img mb-4"
                                                         style="background-image: url('{{ asset($product->image) }}');"></a>

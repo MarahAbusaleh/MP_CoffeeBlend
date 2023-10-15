@@ -47,8 +47,7 @@
 <!-- loader -->
 <div id="ftco-loader" class="show fullscreen">
     <svg class="circular" width="48px" height="48px">
-        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4"
-            stroke="#eeeeee" />
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
         <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4"
             stroke-miterlimit="10" stroke="#F96D00" />
     </svg>
@@ -77,6 +76,18 @@
 <script src="js/main2.js"></script> --}}
 
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#image').change(function(e) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#showImage').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(e.target.files['0']);
+        });
+    });
+</script>
 
 <script>
     $(document).ready(function() {

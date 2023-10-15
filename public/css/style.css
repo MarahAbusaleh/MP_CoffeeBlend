@@ -12435,3 +12435,14 @@ div.dataTables_wrapper div.dataTables_length select {
     background-color: #c49b63 !important;
     color: white !important;
 }
+
+input[type="file"]::file-selector-button {
+    border: none;
+    background: #c49b63;
+    padding: 10px 20px;
+    /* border-radius: 5px; */
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    height: inherit;
+}

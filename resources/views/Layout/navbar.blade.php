@@ -101,8 +101,8 @@
                                     <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2"
                                         data-bs-toggle="dropdown" aria-expanded="false"
                                         style="padding-top: 15px; padding-bottom: 15px">
-                                        <img src="{{ Auth::user()->image }}" alt="Image" width="35" height="35"
-                                            class="rounded-circle" style="background: white">
+                                        <img src="{{ asset(Auth::user()->image) }}" alt="Image" width="35"
+                                            height="35" class="rounded-circle" style="background: white">
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
                                         aria-labelledby="drop2">
