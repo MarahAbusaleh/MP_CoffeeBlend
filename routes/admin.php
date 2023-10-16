@@ -7,7 +7,6 @@ use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,5 +36,4 @@ Route::middleware(['admin', 'role:admin'])->group(function () {
     Route::resource('discount', DiscountController::class);
 
     Route::resource('comment', CommentController::class);
-    // Route::post('comment/export', 'CommentController@index');
 });

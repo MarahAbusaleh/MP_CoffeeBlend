@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Discount;
 use App\Models\Menu;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -12,8 +13,10 @@ class CartController extends Controller
 {
     public function index()
     {
+        $totalPrice = Cart::subtotal();
+        $discount = null;
         // dd(Cart::content());
-        return view('Pages.cart');
+        return view('Pages.cart', compact('totalPrice', 'discount'));
     }
 
 
@@ -78,5 +81,24 @@ class CartController extends Controller
         Alert::success('Item Removed Successfully');
 
         return redirect()->back();
+    }
+
+
+    public function handleCoupon(Request $request)
+    {
+        $discountCode = Discount::where('discount_code', $request->coupon)->first();
+        if ($discountCode) {
+            $per = $discountCode->discount_per;
+            $discount = Cart::subtotal() * $per;
+            $totalPrice = Cart::subtotal() - (Cart::subtotal() * $per);
+
+            Alert::success('Coupon Code Applied Successfully');
+
+            return view('Pages.cart', compact('totalPrice', 'discount'));
+        } else {
+            Alert::error('Incorrect Coupon Code');
+
+            return redirect()->back();
+        }
     }
 }

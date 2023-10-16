@@ -14,7 +14,7 @@
             </p>
             <p>
                 <a href="{{ url('shop') }}" class="btn btn-primary p-3 px-xl-4 py-xl-3">Shop Now</a>
-                <a href="{{ url('menupage') }}" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View
+                <a href="{{ url('menuPage') }}" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View
                     Menu</a>
             </p>
         </div>

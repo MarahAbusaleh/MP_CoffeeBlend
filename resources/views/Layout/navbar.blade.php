@@ -69,8 +69,8 @@
                     <li class="nav-item @if (request()->is('/')) active @endif">
                         <a href="{{ url('/') }}" class="nav-link">Home</a>
                     </li>
-                    <li class="nav-item @if (request()->is('menupage')) active @endif">
-                        <a href="{{ url('/menupage') }}" class="nav-link">Menu</a>
+                    <li class="nav-item @if (request()->is('menuPage')) active @endif">
+                        <a href="{{ url('/menuPage') }}" class="nav-link">Menu</a>
                     </li>
                     <li class="nav-item @if (request()->is('services')) active @endif">
                         <a href="{{ url('/services') }}" class="nav-link">Services</a>

@@ -10,16 +10,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -42,18 +32,14 @@ Route::middleware('auth')->group(function () {
     /*----------------------------------- END USER PROFILE ---------------------------------------- */
 });
 
-//My Routes
-
+//Home Page
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
-Route::get('/menupage', [MenuController::class, 'show']);
+//Menu Page
+Route::get('/menuPage', [MenuController::class, 'show']);
 
 //Show Menu Item Details
 Route::get('/itemDetails/{id}', [MenuController::class, 'itemDetails'])->name('itemDetails');
-
-Route::get('/services', function () {
-    return view('Pages.services');
-});
 
 //Show all Categories
 Route::get('/shop', [CategoryController::class, 'show']);
@@ -63,18 +49,6 @@ Route::get('/showProducts/{id}', [CategoryController::class, 'showProducts'])->n
 
 //Show Product Details
 Route::get('/productDetails/{category_id}/{product_id}', [ProductController::class, 'show'])->name('productDetails');
-
-Route::get('/about', function () {
-    return view('Pages.about');
-});
-
-Route::get('/testttt', function () {
-    return view('Pages.subcategories');
-});
-
-Route::get('/contact', function () {
-    return view('Pages.contact');
-});
 
 /*--------------------------------------------- CART --------------------------------------------- */
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
@@ -87,8 +61,23 @@ Route::get('/addProductToCart/{id}', [CartController::class, 'addProductToCart']
 Route::get('/qtyInc/{id}', [CartController::class, 'qtyInc'])->name('qtyInc');
 Route::get('/qtyDec/{id}', [CartController::class, 'qtyDec'])->name('qtyDec');
 Route::get('/removeFromCart/{id}', [CartController::class, 'removeFromCart'])->name('removeFromCart');
+
+Route::post('handleCoupon', [CartController::class, 'handleCoupon'])->name('handleCoupon');
 /*------------------------------------------- END CART -------------------------------------------- */
 
+//Services Page
+Route::get('/services', function () {
+    return view('Pages.services');
+});
 
+//About Us Page
+Route::get('/about', function () {
+    return view('Pages.about');
+});
+
+//Contact Us Page
+Route::get('/contact', function () {
+    return view('Pages.contact');
+});
 
 require __DIR__ . '/auth.php';
