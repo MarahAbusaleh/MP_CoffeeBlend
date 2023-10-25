@@ -15,8 +15,8 @@ class Order extends Model
         'address',
         'date',
         'status',
+        'total',
         'user_id',
-        'total'
     ];
 
     //With User Model (M:1)

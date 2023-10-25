@@ -46,7 +46,7 @@
 
     <!------------------------------------------------- Login ------------------------------------------------->
     <section class="ftco-counter ftco-bg-dark img" id="section-counter"
-        style="background-image: url(images/bg.jpg); height: 100vh; background-position: center; background-size: cover; opacity: 0.7;"
+        style="background-image: url(images/bg.png); height: 100vh; background-position: center; background-size: cover; opacity: 0.7;"
         data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="centered container">

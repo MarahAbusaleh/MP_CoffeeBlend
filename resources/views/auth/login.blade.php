@@ -48,17 +48,19 @@
 
     {{-- <x-guest-layout> --}}
     <!-- Session Status -->
-    <section class="ftco-counter ftco-bg-dark img" id="section-counter" style="background-image: url(images/bg.jpg)"
+    <section class="ftco-counter ftco-bg-dark img" id="section-counter" style="background-image: url(images/bg.png)"
         data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="centered container">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center;margin-top: 10px">
                 <div class="col-md-12">
-                    <center><img src="images/logo.png" alt="Coffee Blend Logo" style="width: 50%;" class="col-md-10">
+                    <center><img src="images/logo.png" alt="Coffee Blend Logo" style="width: 50%; margin-top: -40px"
+                            class="col-md-10">
                     </center>
                     <x-auth-session-status class="mb-4" :status="session('status')" />
                     <center>
-                        <h3 class="mb-4 billing-heading" style="color: black">Login to Your Account</h3>
+                        <h3 class="mb-4 billing-heading" style="color: black; margin-top: -10px">Login to Your Account
+                        </h3>
                     </center>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -70,6 +72,7 @@
                                 <x-text-input id="login" class="form-control2 block mt-1 w-full" type="text"
                                     name="login" :value="old('login')" required autofocus autocomplete="username" />
                                 <x-input-error :messages="$errors->get('login')" class="mt-2" />
+
                             </div>
                         </div>
 
