@@ -8,7 +8,10 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+// Auth::routes(['verify' => true]);
 
 
 Route::get('/dashboard', function () {
@@ -21,7 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     /*----------------------------------------- CHECKOUT ------------------------------------------ */
-    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+    Route::get('/checkout/{discount}', [CheckoutController::class, 'index'])->name('checkout');
     Route::post('/submitCheckout', [CheckoutController::class, 'submitCheckout'])->name('submitCheckout');
     /*--------------------------------------- END CHECKOUT ---------------------------------------- */
 
@@ -42,7 +45,7 @@ Route::get('/menuPage', [MenuController::class, 'show']);
 Route::get('/itemDetails/{id}', [MenuController::class, 'itemDetails'])->name('itemDetails');
 
 //Show all Categories
-Route::get('/shop', [CategoryController::class, 'show']);
+Route::get('/shop', [CategoryController::class, 'show'])->name('shop');
 
 //Show Products in each Category
 Route::get('/showProducts/{id}', [CategoryController::class, 'showProducts'])->name('showProducts');

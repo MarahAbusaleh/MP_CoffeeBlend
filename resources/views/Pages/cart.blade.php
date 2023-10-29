@@ -87,20 +87,17 @@
                 </div>
 
                 <!-- Cart Totals Details -->
-                <div class="row justify-content-end">
+                <div class="row" style="margin-left: 0px, margin-right: 0px; margin: 0px !important">
 
-                    <form action="{{ route('handleCoupon') }}" method="POST">
+                    <form action="{{ route('handleCoupon') }}" method="POST" style="margin-left: 0px" class="col-lg-6">
                         @csrf
-                        <div class="row col-lg-6 mt-5 ">
-                            <div class="col-lg-8 input-group mb-3">
-                                <input type="text" name="coupon" class="coupon form-control input-number" min="0"
-                                    max="100">
-                            </div>
-                            <div>
-                                <button href="" class="btn btn-primary py-3 px-4" style="color: black !important">
-                                    Apply Coupon
-                                </button>
-                            </div>
+                        <div class="row col-lg-12 mt-5 " style="margin-left: 0px">
+                            <input type="text" name="coupon" class="coupon form-control input-number col-lg-8"
+                                min="0" max="100">
+                            <button href="" class="btn btn-primary py-3 px-1 col-lg-3"
+                                style="color: black !important;margin-left:5px">
+                                Apply Coupon
+                            </button>
                         </div>
                     </form>
 
@@ -123,14 +120,16 @@
                                 <span></span>
                                 <span>1 JOD</span>
                             </p>
-                            <p class="d-flex">
-                                <span>Discount</span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span>{{ $discount }} JOD</span>
-                            </p>
+                            @if ($discount)
+                                <p class="d-flex">
+                                    <span>Discount</span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span>{{ $discount }} JOD</span>
+                                </p>
+                            @endif
                             <hr>
                             <p class="d-flex total-price">
                                 <span>Total</span>
@@ -141,7 +140,8 @@
                                 <span>{{ $totalPrice + 1 }} JOD</span>
                             </p>
                         </div>
-                        <p class="text-center"><a href="{{ route('checkout') }}" class="btn btn-primary py-3 px-4">Proceed
+                        <p class="text-center"><a href="{{ route('checkout', +$discount) }}"
+                                class="btn btn-primary py-3 px-4">Proceed
                                 to
                                 Checkout</a>
                         </p>
@@ -149,15 +149,17 @@
                 </div>
             </div>
         @else
-            <div class="container">
-                <div class="row">
-                    <p class="text-center">
-                        <a href="{{ route('checkout') }}" class="btn btn-primary py-3 px-4">
-                            Proceed to Checkout
-                        </a>
-                    </p>
+            <center>
+                <div class="container">
+                    <h2>
+                        The Cart is empty
+                    </h2>
+                    <br>
+                    <a href="{{ route('shop') }}" class="btn btn-primary py-3 px-4">
+                        Shop Now
+                    </a>
                 </div>
-            </div>
+            </center>
         @endif
     </section>
 

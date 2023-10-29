@@ -14,9 +14,9 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class CheckoutController extends Controller
 {
-    public function index()
+    public function index($discount)
     {
-        return view('Pages.checkout');
+        return view('Pages.checkout', compact('discount'));
     }
 
 
@@ -40,6 +40,7 @@ class CheckoutController extends Controller
             'user_id' => Auth::user()->id,
             'status' => 'In Shipping',
             'total' => $cartTotal,
+
         ]);
 
 

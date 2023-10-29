@@ -41,14 +41,14 @@
                                 <div class="form-group">
                                     <label for="firstname">Firt Name</label>
                                     <input type="text" class="form-control" placeholder=""
-                                        value="{{ Auth::user()->name }}" />
+                                        value="{{ Auth::user()->name }}" readonly />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="country">Email Address</label>
                                     <input type="text" class="form-control" placeholder=""
-                                        value="{{ Auth::user()->email }}" />
+                                        value="{{ Auth::user()->email }}" readonly />
                                 </div>
                             </div>
                             <div class="w-100"></div>
@@ -105,20 +105,22 @@
                                         <span>Delivery</span>
                                         <span></span>
                                         <span></span>
-                                        <span> JOD</span>
+                                        <span>1 JOD</span>
                                     </p>
-                                    <p class="d-flex">
-                                        <span>Discount</span>
-                                        <span></span>
-                                        <span></span>
-                                        <span> JOD</span>
-                                    </p>
+                                    @if ($discount)
+                                        <p class="d-flex">
+                                            <span>Discount</span>
+                                            <span></span>
+                                            <span></span>
+                                            <span>{{ $discount }} JOD</span>
+                                        </p>
+                                    @endif
                                     <hr />
                                     <p class="d-flex total-price">
                                         <span>Total</span>
                                         <span></span>
                                         <span></span>
-                                        <span>{{ Cart::subtotal() }} JOD</span>
+                                        <span>{{ Cart::subtotal() + 1 - $discount }} JOD</span>
                                     </p>
                                     <p>
                                         <button href="" class="btn btn-primary py-3 px-4" type="submit">Place an
