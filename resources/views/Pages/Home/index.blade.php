@@ -46,6 +46,12 @@
     @include('Pages.Home.Sections.ourStory')
 
     <!--///////////////////////////////////////// END Of Our Story ////////////////////////////////////////-->
+
+    <!-------------------------------------------- Our Partners --------------------------------------------->
+
+    @include('Pages.Home.Sections.partners')
+
+    <!--//////////////////////////////////////// END Of Our Partners //////////////////////////////////////-->
     <hr style="border-top: 1px solid gray;">
 
 @endsection
