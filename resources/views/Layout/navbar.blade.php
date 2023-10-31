@@ -34,31 +34,13 @@
     <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
-    {{-- <link rel="stylesheet" href="css/style2.css" /> --}}
-    <!-- <style>
-  .vsc-controller{
-   white-space-collapse: collapse;
-   text-warp: warp;
-   user-select: none;
-  }
-  .beans-video-wrp video{
-   position: absolute;
-   top: 0;
-   left: 0;
-   right: 0;
-   width: 100%;
-   height: 100%;
-   object-fit: cover;
-   object-position: center;
-  }
- </style> -->
 </head>
 
 <body>
     <!----------------------------------------------- NavBar ----------------------------------------------->
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}"">Coffee<small>Blend</small></a>
+            <a class="navbar-brand" href="{{ url('/') }}">Coffee<small>Blend</small></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span>
