@@ -12,7 +12,7 @@
 
     <!-------------------------------------------- Our Category -------------------------------------------->
 
-    {{-- @include('Pages.Home.Sections.ourCategory') --}}
+    @include('Pages.Home.Sections.ourCategory')
 
     <!--////////////////////////////////////// END Of Our Category //////////////////////////////////////-->
 
@@ -25,7 +25,7 @@
 
     <!-------------------------------------------- Best Sellers -------------------------------------------->
 
-    @include('Pages.Home.Sections.bestSellers')
+    @include('Pages.Home.Sections.newArrival')
 
     <!--////////////////////////////////////// END Of Best Sellers //////////////////////////////////////-->
 

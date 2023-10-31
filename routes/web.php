@@ -3,6 +3,8 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\FacebookController;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProductController;
@@ -82,5 +84,17 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('Pages.contact');
 });
+
+
+/*------------ Login With google & Facebook ------------*/
+
+Route::get('auth/google', [GoogleController::class, 'redirect'])->name('google-auth');
+Route::get('auth/google/call-back', [GoogleController::class, 'callbackGoogle']);
+
+Route::get('auth/facebook', [FacebookController::class, 'facebookPage'])->name('facebook-auth');
+Route::get('auth/facebook/callback', [FacebookController::class, 'facebookredirect']);
+
+
+
 
 require __DIR__ . '/auth.php';
