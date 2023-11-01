@@ -28,6 +28,8 @@ Route::middleware('auth')->group(function () {
     /*----------------------------------------- CHECKOUT ------------------------------------------ */
     Route::get('/checkout/{discount}', [CheckoutController::class, 'index'])->name('checkout');
     Route::post('/submitCheckout', [CheckoutController::class, 'submitCheckout'])->name('submitCheckout');
+    Route::get('paypal/success', [CheckoutController::class, 'success'])->name('paypal_success');
+    Route::get('paypal/cancel',  [CheckoutController::class, 'cancel'])->name('paypal_cancel');
     /*--------------------------------------- END CHECKOUT ---------------------------------------- */
 
     /*--------------------------------------- USER PROFILE ---------------------------------------- */
