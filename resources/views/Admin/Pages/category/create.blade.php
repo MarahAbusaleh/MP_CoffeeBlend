@@ -27,7 +27,7 @@
                                     <span class="text-danger">{{ $errors->first('image1') }}</span>
                                 @endif
                             </div>
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label for="image2" class="form-label">Image 2 :</label>
                                 <input type="file" class="form-control" id="image2" name="image2" required>
                                 @if ($errors->has('image2'))
@@ -40,7 +40,7 @@
                                 @if ($errors->has('image3'))
                                     <span class="text-danger">{{ $errors->first('image3') }}</span>
                                 @endif
-                            </div>
+                            </div> --}}
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>

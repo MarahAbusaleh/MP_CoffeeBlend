@@ -6,7 +6,8 @@
     <!----------------------------------------------- Header ----------------------------------------------->
 
     <section class="home-slider owl-carousel">
-        <div class="slider-item" style="background-image: url(images/bg_3.jpg)" data-stellar-background-ratio="0.5">
+        <div class="slider-item" style="background-image: url({{ asset('images/bg_3.jpg') }})"
+            data-stellar-background-ratio="0.5">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row slider-text justify-content-center align-items-center">
@@ -68,25 +69,6 @@
                                 </div>
                             </div>
                             <div class="w-100"></div>
-                            {{-- <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="country">Card Number</label>
-                                    <input type="text" class="form-control" placeholder="" />
-                                </div>
-                            </div>
-                            <div class="w-100"></div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="phone">CVV</label>
-                                    <input type="text" class="form-control" placeholder="" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="emailaddress">MM/YY</label>
-                                    <input type="text" class="form-control" placeholder="" />
-                                </div>
-                            </div> --}}
                         </div>
 
                         <!-- END -->
@@ -124,12 +106,26 @@
                                     </p>
                                     <br>
                                     <br>
-                                    <!-- Set up a container element for the button -->
-                                    <div class="col-lg-12" id="paypal-button-container"></div>
-                                    <p>
+
+                                    <label>
+                                        <input type="radio" name="payment-option" value="alternate">
+                                        Cash on delivary
+                                    </label>
+                                    <br>
+                                    <label style="display: inline-block;">
+                                        <input type="radio" name="payment-option" value="paypal" checked
+                                            style="display: inline;">
+                                        <div id="paypal-marks-container" style="display: inline;"></div>
+                                    </label>
+
+                                    <center>
+                                        <div class="col-lg-6" id="paypal-buttons-container"></div>
+                                    </center>
+                                    <div id="alternate-button-container">
                                         <button href="" class="btn btn-primary py-3 px-4" type="submit">Place an
                                             order</button>
-                                    </p>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -143,67 +139,46 @@
     <!--////////////////////////////////////// END Of Payment Section /////////////////////////////////////-->
 
     <!-- Include the PayPal JavaScript SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+    {{-- <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script> --}}
+    <script src="https://www.paypal.com/sdk/js?client-id=test&components=buttons,marks"></script>
 
     <script>
         // Render the PayPal button into #paypal-button-container
-        paypal.Buttons({
+        paypal.Marks().render('#paypal-marks-container');
 
-            // Call your server to set up the transaction
-            createOrder: function(data, actions) {
-                return fetch('/demo/checkout/api/paypal/order/create/', {
-                    method: 'post'
-                }).then(function(res) {
-                    return res.json();
-                }).then(function(orderData) {
-                    return orderData.id;
-                });
-            },
+        paypal.Buttons().render('#paypal-buttons-container');
 
-            // Call your server to finalize the transaction
-            onApprove: function(data, actions) {
-                return fetch('/demo/checkout/api/paypal/order/' + data.orderID + '/capture/', {
-                    method: 'post'
-                }).then(function(res) {
-                    return res.json();
-                }).then(function(orderData) {
-                    // Three cases to handle:
-                    //   (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
-                    //   (2) Other non-recoverable errors -> Show a failure message
-                    //   (3) Successful transaction -> Show confirmation or thank you
+        // Listen for changes to the radio buttons
+        document.querySelectorAll('input[name=payment-option]')
+            .forEach(function(el) {
+                el.addEventListener('change', function(event) {
 
-                    // This example reads a v2/checkout/orders capture response, propagated from the server
-                    // You could use a different API or structure for your 'orderData'
-                    var errorDetail = Array.isArray(orderData.details) && orderData.details[0];
+                    // If PayPal is selected, show the PayPal button
+                    if (event.target.value === 'paypal') {
+                        document.body.querySelector('#alternate-button-container')
+                            .style.display = 'none';
+                        document.body.querySelector('#paypal-buttons-container')
+                            .style.display = 'block';
 
-                    if (errorDetail && errorDetail.issue === 'INSTRUMENT_DECLINED') {
-                        return actions.restart(); // Recoverable state, per:
-                        // https://developer.paypal.com/docs/checkout/integration-features/funding-failure/
+                        document.getElementById('paypal-buttons-container').addEventListener('click',
+                            function() {
+                                // Redirect the user to the desired route
+                                window.location.href = "{{ route('submitCheckout') }}";
+                            });
                     }
 
-                    if (errorDetail) {
-                        var msg = 'Sorry, your transaction could not be processed.';
-                        if (errorDetail.description) msg += '\n\n' + errorDetail.description;
-                        if (orderData.debug_id) msg += ' (' + orderData.debug_id + ')';
-                        return alert(
-                            msg
-                        ); // Show a failure message (try to avoid alerts in production environments)
+                    // If alternate funding is selected, show a different button
+                    if (event.target.value === 'alternate') {
+                        document.body.querySelector('#alternate-button-container')
+                            .style.display = 'block';
+                        document.body.querySelector('#paypal-buttons-container')
+                            .style.display = 'none';
                     }
-
-                    // Successful capture! For demo purposes:
-                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-                    var transaction = orderData.purchase_units[0].payments.captures[0];
-                    alert('Transaction ' + transaction.status + ': ' + transaction.id +
-                        '\n\nSee console for all available details');
-
-                    // Replace the above to show a success message within this page, e.g.
-                    // const element = document.getElementById('paypal-button-container');
-                    // element.innerHTML = '';
-                    // element.innerHTML = '<h3>Thank you for your payment!</h3>';
-                    // Or go to another URL:  actions.redirect('thank_you.html');
                 });
-            }
+            });
 
-        }).render('#paypal-button-container');
+        // Hide non-PayPal button by default
+        document.body.querySelector('#alternate-button-container')
+            .style.display = 'none';
     </script>
 @endsection

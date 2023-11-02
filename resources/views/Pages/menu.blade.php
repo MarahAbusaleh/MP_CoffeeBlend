@@ -28,6 +28,10 @@
             <div class="row">
                 <div class="mb-5 pb-3">
 
+                    @php
+                        use Illuminate\Support\Str;
+                    @endphp
+
                     <!-- Hot Drinks -->
                     <div class="row">
                         <h3 class="col-md-12 heading-pricing ftco-animate">Hot Drinks</h3><br>
@@ -39,16 +43,23 @@
 
                                 <div class="desc pl-3">
                                     <div class="d-flex text align-items-center">
-                                        <h3><span>{{ $hot->name }}</span></h3>
+                                        <h3>
+                                            <span>
+                                                <a href="{{ route('itemDetails', $hot->id) }}"
+                                                    style="color: white">{{ $hot->name }}</a>
+                                            </span>
+                                        </h3>
                                         <span class="price">{{ $hot->price }} JOD</span>
                                     </div>
                                     <div class="d-block">
-                                        <p>{{ $hot->description }}</p>
+                                        <p>{{ Str::limit($hot->description, 53) }}</p>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
                     </div>
+                    <br>
+                    <br>
 
                     <!-- Cold Drinks -->
                     <div class="row">
@@ -61,7 +72,12 @@
 
                                 <div class="desc pl-3">
                                     <div class="d-flex text align-items-center">
-                                        <h3><span>{{ $cold->name }}</span></h3>
+                                        <h3>
+                                            <span>
+                                                <a href="{{ route('itemDetails', $cold->id) }}"
+                                                    style="color: white">{{ $cold->name }}</a>
+                                            </span>
+                                        </h3>
                                         <span class="price">{{ $cold->price }} JOD</span>
                                     </div>
                                     <div class="d-block">
@@ -71,6 +87,12 @@
                             </div>
                         @endforeach
                     </div>
+                    <div style="display: flex; justify-content: flex-end;">
+                        <a href="" class="btn btn-primary p-3 px-xl-4 py-xl-3" style="margin-right: 5px;">
+                            Download the menu
+                        </a>
+                    </div>
+
 
                 </div>
             </div>

@@ -54,11 +54,11 @@
                     <li class="nav-item @if (request()->is('menuPage')) active @endif">
                         <a href="{{ url('/menuPage') }}" class="nav-link">Menu</a>
                     </li>
-                    <li class="nav-item @if (request()->is('services')) active @endif">
+                    {{-- <li class="nav-item @if (request()->is('services')) active @endif">
                         <a href="{{ url('/services') }}" class="nav-link">Services</a>
-                    </li>
-                    <li class="nav-item @if (request()->is('shop')) active @endif">
-                        <a href="{{ url('/shop') }}" class="nav-link">Shop</a>
+                    </li> --}}
+                    <li class="nav-item @if (request()->is('showProducts/1')) active @endif">
+                        <a href="{{ route('showProducts', 1) }}" class="nav-link">Shop</a>
                     </li>
                     <li class="nav-item @if (request()->is('about')) active @endif">
                         <a href="{{ url('/about') }}" class="nav-link">About</a>

@@ -61,15 +61,18 @@
                     <h2 class="mb-4">Related Products</h2>
                 </div>
             </div>
+            @php
+                use Illuminate\Support\Str;
+            @endphp
             <div class="row">
                 @foreach ($Items as $Item)
                     <div class="col-md-3">
                         <div class="menu-entry">
                             <a href="#" class="img" style="background-image: url('{{ asset($Item->image) }}')"></a>
                             <div class="text text-center pt-4">
-                                <h3><a href="#">{{ $Item->name }}</a></h3>
+                                <h3><a href="#">{{ Str::limit($Item->name, 15) }}</a></h3>
                                 <p>
-                                    {{ $Item->description }}
+                                    {{ Str::limit($Item->description, 50) }}
                                 </p>
                                 <p class="price"><span>{{ $Item->price }} JOD</span></p>
                                 <p>

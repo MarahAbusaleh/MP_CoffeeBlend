@@ -46,17 +46,18 @@ class CheckoutController extends Controller
         if (isset($response['id']) && $response['id'] != null) {
             foreach ($response['links'] as $link) {
                 if ($link['rel'] === 'approve') {
+                    $cartTotal = Cart::subtotal();
+
                     session([
                         'paymentDetail' => [
-                            'phone' => $request->input('phone'),
-                            'country' => $request->input('country'),
-                            'city' => $request->input('city'),
-                            'street_address' => $request->input('street_address'),
-                            'post_code' => $request->input('post_code'),
-                            'discount_id' => $request->input('discount_id') ? $request->input('discount_id') : null,
-                            'payment_method' => $request->input('payment_method'),
+                            'address' => $request->address,
+                            'date' => Date::now(),
+                            'user_id' => Auth::user()->id,
+                            'status' => 'In Shipping',
+                            'total' => $cartTotal,
                         ]
                     ]);
+
                     return redirect()->away($link['href']);
                 }
             }
@@ -67,14 +68,12 @@ class CheckoutController extends Controller
 
     public function success(Request $request)
     {
-        dd($request);
+        // dd($request);
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
         $paypalToken = $provider->getAccessToken();
         $response = $provider->capturePaymentOrder($request->token);
         $payment = session('paymentDetail');
-
-        // dd($response);
 
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
             // Data Validate
@@ -83,18 +82,17 @@ class CheckoutController extends Controller
             //     'address' => 'required|string',
             // ]);
 
-            $data = $request->except(['_method']);
+            // $data = $request->except(['_method']);
 
-            User::where('id', Auth::user()->id)->update($data);
+            // User::where('id', Auth::user()->id)->update($data);
+            $payment = session('paymentDetail');
 
-            $cartTotal = Cart::subtotal();
-            // dd($cartTotal);
             $order = Order::create([
-                'address' => $request->address,
+                'address' => $payment['address'],
                 'date' => Date::now(),
                 'user_id' => Auth::user()->id,
-                'status' => 'In Shipping',
-                'total' => $cartTotal,
+                'status' => $payment['status'],
+                'total' => $payment['total'],
 
             ]);
 
@@ -117,6 +115,8 @@ class CheckoutController extends Controller
                     ]);
                 }
             }
+
+            session()->forget('paymentDetail');
 
             Cart::destroy();
             Alert::success('Your Order Submitted Successfully', 'Check Your Profile To Track It');

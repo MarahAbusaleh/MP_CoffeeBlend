@@ -17,7 +17,10 @@
                                 <div class="col-lg-3" style="border: 1px solid gray; margin: 0px;">
                                     <div class="">
                                         <div class="text text-center pt-4">
-                                            <div class="contimg">
+                                            <div>
+                                                <img src="{{ asset($category->image1) }}" height="360px" width="100%">
+                                            </div>
+                                            {{-- <div class="contimg">
                                                 <div class="containerimg2">
                                                     <img src="{{ asset($category->image1) }}" alt="Image 1"
                                                         class="shopimg2">
@@ -26,8 +29,8 @@
                                                     <img src="{{ asset($category->image3) }}" alt="Image 3"
                                                         class="shopimg2">
                                                 </div>
-                                            </div>
-                                            <p style="margin-top: 120px;"><a
+                                            </div> --}}
+                                            <p style="margin-top: 65px;"><a
                                                     href="{{ route('showProducts', $category->id) }}"
                                                     class="btn btn-primary"
                                                     style="height: fit-content; width: fit-content; font-size: 15px;">{{ $category->name }}</a>

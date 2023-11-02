@@ -93,11 +93,12 @@
                         @csrf
                         <div class="row col-lg-12 mt-5 " style="margin-left: 0px">
                             <input type="text" name="coupon" class="coupon form-control input-number col-lg-8"
-                                min="0" max="100">
-                            <button href="" class="btn btn-primary py-3 px-1 col-lg-3"
-                                style="color: black !important;margin-left:5px">
-                                Apply Coupon
-                            </button>
+                                min="0" max="100" style="margin-right: 5px">
+                            <p>
+                                <a href="" class="btn btn-primary py-3 px-1 col-lg-12">
+                                    Apply Coupon
+                                </a>
+                            </p>
                         </div>
                     </form>
 

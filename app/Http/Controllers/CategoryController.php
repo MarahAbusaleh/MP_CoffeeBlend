@@ -29,8 +29,8 @@ class CategoryController extends Controller
         $request->validate([
             'name' => ['required', 'max:20'],
             'image1' => ['required', 'image', 'max:4192'],
-            'image2' => ['required', 'image', 'max:4192'],
-            'image3' => ['required', 'image', 'max:4192'],
+            // 'image2' => ['required', 'image', 'max:4192'],
+            // 'image3' => ['required', 'image', 'max:4192'],
         ]);
 
         $relativeImagePath1 = null;
@@ -40,25 +40,25 @@ class CategoryController extends Controller
             $request->file('image1')->move(public_path('assets/images'), $newImageName1);
         }
 
-        $relativeImagePath2 = null;
-        if ($request->hasFile('image2')) {
-            $newImageName2 = uniqid() . '-' . $request->input('name') . '.' . $request->file('image2')->extension();
-            $relativeImagePath2 = 'assets/images/' . $newImageName2;
-            $request->file('image2')->move(public_path('assets/images'), $newImageName2);
-        }
+        // $relativeImagePath2 = null;
+        // if ($request->hasFile('image2')) {
+        //     $newImageName2 = uniqid() . '-' . $request->input('name') . '.' . $request->file('image2')->extension();
+        //     $relativeImagePath2 = 'assets/images/' . $newImageName2;
+        //     $request->file('image2')->move(public_path('assets/images'), $newImageName2);
+        // }
 
-        $relativeImagePath3 = null;
-        if ($request->hasFile('image3')) {
-            $newImageName3 = uniqid() . '-' . $request->input('name') . '.' . $request->file('image3')->extension();
-            $relativeImagePath3 = 'assets/images/' . $newImageName3;
-            $request->file('image3')->move(public_path('assets/images'), $newImageName3);
-        }
+        // $relativeImagePath3 = null;
+        // if ($request->hasFile('image3')) {
+        //     $newImageName3 = uniqid() . '-' . $request->input('name') . '.' . $request->file('image3')->extension();
+        //     $relativeImagePath3 = 'assets/images/' . $newImageName3;
+        //     $request->file('image3')->move(public_path('assets/images'), $newImageName3);
+        // }
 
         Category::create([
             'name' => $request->input('name'),
             'image1' => $relativeImagePath1,
-            'image2' => $relativeImagePath2,
-            'image3' => $relativeImagePath3,
+            // 'image2' => $relativeImagePath2,
+            // 'image3' => $relativeImagePath3,
         ]);
 
         Alert::success('success', 'Category Added Successfully');
@@ -96,8 +96,8 @@ class CategoryController extends Controller
         $request->validate([
             'name' => ['required', 'max:20'],
             'image1' => ['image', 'max:4192'],
-            'image2' => ['image', 'max:4192'],
-            'image3' => ['image', 'max:4192'],
+            // 'image2' => ['image', 'max:4192'],
+            // 'image3' => ['image', 'max:4192'],
         ]);
 
         $data = $request->except(['_token', '_method']);
@@ -110,21 +110,21 @@ class CategoryController extends Controller
             $data['image1'] = $relativeImagePath1;
         }
 
-        $relativeImagePath2 = null;
-        if ($request->hasFile('image2')) {
-            $newImageName2 = uniqid() . '-' . $request->input('name') . '.' . $request->file('image2')->extension();
-            $relativeImagePath2 = 'assets/images/' . $newImageName2;
-            $request->file('image2')->move(public_path('assets/images'), $newImageName2);
-            $data['image2'] = $relativeImagePath2;
-        }
+        // $relativeImagePath2 = null;
+        // if ($request->hasFile('image2')) {
+        //     $newImageName2 = uniqid() . '-' . $request->input('name') . '.' . $request->file('image2')->extension();
+        //     $relativeImagePath2 = 'assets/images/' . $newImageName2;
+        //     $request->file('image2')->move(public_path('assets/images'), $newImageName2);
+        //     $data['image2'] = $relativeImagePath2;
+        // }
 
-        $relativeImagePath3 = null;
-        if ($request->hasFile('image3')) {
-            $newImageName3 = uniqid() . '-' . $request->input('name') . '.' . $request->file('image3')->extension();
-            $relativeImagePath3 = 'assets/images/' . $newImageName3;
-            $request->file('image3')->move(public_path('assets/images'), $newImageName3);
-            $data['image3'] = $relativeImagePath3;
-        }
+        // $relativeImagePath3 = null;
+        // if ($request->hasFile('image3')) {
+        //     $newImageName3 = uniqid() . '-' . $request->input('name') . '.' . $request->file('image3')->extension();
+        //     $relativeImagePath3 = 'assets/images/' . $newImageName3;
+        //     $request->file('image3')->move(public_path('assets/images'), $newImageName3);
+        //     $data['image3'] = $relativeImagePath3;
+        // }
 
         Category::where('id', $id)->update($data);
 

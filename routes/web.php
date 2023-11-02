@@ -80,7 +80,7 @@ Route::get('/services', function () {
 //About Us Page
 Route::get('/about', function () {
     return view('Pages.about');
-});
+})->name('about');
 
 //Contact Us Page
 Route::get('/contact', function () {
