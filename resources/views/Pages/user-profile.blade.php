@@ -30,6 +30,17 @@
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                         <img id="showImage" class="rounded-circle" width="300px" src="{{ asset(Auth::user()->image) }}">
                     </div>
+                    <center>
+                        <div>
+                            <button id="updateButton" type="submit" href="#" class="btn btn-primary py-3 px-4"
+                                style="color: black !important">
+                                Update Password
+                                <span class="icon icon-edit"
+                                    style="color: black;
+                            font-size: 20px"></span>
+                            </button>
+                        </div>
+                    </center>
                 </div>
                 @include('sweetalert::alert')
 
@@ -96,6 +107,12 @@
         </div>
         </div>
         </div>
+        <div class="container update-pass" style="display: none;">
+            @include('../profile/partials/update-password-form')
+        </div>
+        <br>
+        <br>
+        <br>
 
         <div class="billing_form container" data-aos="fade-up" data-aos-duration="2000" style="padding-top: 35px;">
             <h3 class="form_title mb_30">Your Orders</h3>
@@ -142,6 +159,18 @@
 
     <!--/////////////////////////////////////// END Of User Profile //////////////////////////////////////-->
     <hr style="border-top: 1px solid gray;">
+    <script>
+        const updateButton = document.getElementById('updateButton');
+        const updatePassSection = document.querySelector('.update-pass');
+
+        updateButton.addEventListener('click', function() {
+            if (updatePassSection.style.display === 'none') {
+                updatePassSection.style.display = 'block';
+            } else {
+                updatePassSection.style.display = 'none';
+            }
+        });
+    </script>
 
 
 

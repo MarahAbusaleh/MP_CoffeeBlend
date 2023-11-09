@@ -95,9 +95,9 @@
                             <input type="text" name="coupon" class="coupon form-control input-number col-lg-8"
                                 min="0" max="100" style="margin-right: 5px">
                             <p>
-                                <a href="" class="btn btn-primary py-3 px-1 col-lg-12">
+                                <button href="" class="btn btn-primary py-3 px-1 col-lg-12" type="submit">
                                     Apply Coupon
-                                </a>
+                                </button>
                             </p>
                         </div>
                     </form>
