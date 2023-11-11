@@ -11189,6 +11189,7 @@ textarea.form-control {
 }
 
 .ftco-animate {
+    margin-bottom: 15%;
     opacity: 0;
     visibility: hidden;
 }
@@ -12478,4 +12479,11 @@ input[type="file"]::file-selector-button {
     cursor: pointer;
     font-size: 15px;
     height: inherit;
+}
+.rating_stars a {
+    color: #f5ac2e;
+}
+
+.rating_stars a.filled {
+    color: red;
 }

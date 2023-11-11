@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\DataTables\ProductDataTable;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
@@ -58,7 +60,8 @@ class ProductController extends Controller
     {
         $product = Product::find($product_id);
         $Items = Product::where('category_id', $category_id)->inRandomOrder()->take(4)->get();
-        return view('Pages.product-single2', compact('product', 'Items'));
+        $reviews = Review::where('product_id', $product_id)->get();
+        return view('Pages.product-single2', compact('product', 'Items', 'reviews'));
     }
 
 
@@ -93,6 +96,26 @@ class ProductController extends Controller
 
         Alert::success('success', 'Product Updated Successfully');
         return redirect()->route('product.index');
+    }
+
+
+    public function AddReview(Request $request, $user_id, $product_id)
+    {
+        // Data Validate
+        $request->validate([
+            'comment' => 'required|string',
+            'rating' => ['required', 'integer', Rule::in([1, 2, 3, 4, 5])],
+        ]);
+
+
+        Review::create([
+            'comment' => $request->input('comment'),
+            'rating' => $request->input('rating'),
+            'user_id' => $user_id,
+            'product_id' => $product_id
+        ]);
+
+        return redirect()->back();
     }
 
 

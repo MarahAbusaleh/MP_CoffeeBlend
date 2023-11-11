@@ -37,6 +37,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/editMyProfile', [UserController::class, 'editMyProfile'])->name('editMyProfile');
     Route::get('/myOrders/{id}', [UserController::class, 'myOrders'])->name('myOrders');
     /*----------------------------------- END USER PROFILE ---------------------------------------- */
+
+    /*--------------------------------------- ADD REVIEW ---------------------------------------- */
+    Route::post('/AddReview/{user_id}/{product_id}', [ProductController::class, 'AddReview'])->name('AddReview');
+    /*----------------------------------- END ADD REVIEW  ---------------------------------------- */
 });
 
 //Home Page
@@ -57,19 +61,22 @@ Route::get('/showProducts/{id}', [CategoryController::class, 'showProducts'])->n
 //Show Product Details
 Route::get('/productDetails/{category_id}/{product_id}', [ProductController::class, 'show'])->name('productDetails');
 
+
 /*--------------------------------------------- CART --------------------------------------------- */
-Route::get('/cart', [CartController::class, 'index'])->name('cart');
-//Add Menu Item To Cart
-Route::get('/addItemToCart/{id}', [CartController::class, 'addItemToCart'])->name('addItemToCart');
 
-//Add Menu Item To Cart
-Route::get('/addProductToCart/{id}', [CartController::class, 'addProductToCart'])->name('addProductToCart');
+Route::controller(CartController::class)->group(function () {
+    Route::get('/cart', 'index')->name('cart');
+    //Add Menu Item To Cart
+    Route::get('/addItemToCart/{id}', 'addItemToCart')->name('addItemToCart');
+    //Add Menu Item To Cart
+    Route::get('/addProductToCart/{id}', 'addProductToCart')->name('addProductToCart');
 
-Route::get('/qtyInc/{id}', [CartController::class, 'qtyInc'])->name('qtyInc');
-Route::get('/qtyDec/{id}', [CartController::class, 'qtyDec'])->name('qtyDec');
-Route::get('/removeFromCart/{id}', [CartController::class, 'removeFromCart'])->name('removeFromCart');
+    Route::get('/qtyInc/{id}', 'qtyInc')->name('qtyInc');
+    Route::get('/qtyDec/{id}', 'qtyDec')->name('qtyDec');
+    Route::get('/removeFromCart/{id}', 'removeFromCart')->name('removeFromCart');
+    Route::post('handleCoupon', 'handleCoupon')->name('handleCoupon');
+});
 
-Route::post('handleCoupon', [CartController::class, 'handleCoupon'])->name('handleCoupon');
 /*------------------------------------------- END CART -------------------------------------------- */
 
 //Services Page
@@ -87,6 +94,11 @@ Route::get('/contact', function () {
     return view('Pages.contact');
 });
 
+//FallBack Route (404)
+// Route::fallback(function () {
+//     return view('Pages.404Error');
+// });
+
 
 /*------------ Login With google & Facebook ------------*/
 
@@ -95,8 +107,5 @@ Route::get('auth/google/call-back', [GoogleController::class, 'callbackGoogle'])
 
 Route::get('auth/facebook', [FacebookController::class, 'facebookPage'])->name('facebook-auth');
 Route::get('auth/facebook/callback', [FacebookController::class, 'facebookredirect']);
-
-
-
 
 require __DIR__ . '/auth.php';

@@ -16,6 +16,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('css/open-iconic-bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}" />
@@ -34,6 +35,7 @@
     <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+
 </head>
 
 <body>
@@ -117,3 +119,26 @@
         </div>
     </nav>
     <!--//////////////////////////////////////////// END Of Nav ////////////////////////////////////////////-->
+
+    <!----------------------------------------------- Header ----------------------------------------------->
+
+    @if (!request()->is('/'))
+        <section class="home-slider owl-carousel">
+            <div class="slider-item" style="background-image: url({{ asset('images/bg_3.jpg') }}); height: 500px"
+                data-stellar-background-ratio="0.5">
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row slider-text justify-content-center align-items-center">
+                        <div class="col-md-7 col-sm-12 text-center ftco-animate">
+                            <h1 class="mb-3 mt-5 bread">@yield('header title')</h1>
+                            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span>
+                                <span>@yield('header')</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+
+    <!--///////////////////////////////////////// END Of Header //////////////////////////////////////////-->
