@@ -197,7 +197,7 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
         Yajra\DataTables\ButtonsServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
-
+        Barryvdh\DomPDF\ServiceProvider::class,
     ],
 
     /*
@@ -214,7 +214,8 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Datatables'    => Yajra\DataTables\Facades\DataTables::class,
-        'Cart' =>  Gloudemans\Shoppingcart\Facades\Cart::class,
+        'Cart' =>  Gloudemans\Shoppingcart\Facades\Cart::class, \Barryvdh\DomPDF\ServiceProvider::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ])->toArray(),
 
 ];

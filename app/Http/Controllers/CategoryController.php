@@ -79,7 +79,8 @@ class CategoryController extends Controller
     {
         $categories = Category::all();
         $products = Product::where('category_id', $id)->get();
-        return view('Pages.subcategories', compact('categories', 'products'));
+        $allProducts = Product::get();
+        return view('Pages.subcategories', compact('categories', 'products', 'allProducts'));
     }
 
 
