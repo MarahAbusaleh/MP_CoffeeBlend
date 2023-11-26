@@ -104,6 +104,11 @@
                                             order</button>
                                     </div>
 
+                                    {{-- <div id="alternate-button-container">
+                                        <button href="" class="btn btn-primary py-3 px-4"
+                                            type="submit"><span>Pay</span><span>Pal</span></button>
+                                    </div> --}}
+
                                 </div>
                             </div>
                         </div>

@@ -13,10 +13,11 @@ class ContactMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $data;
 
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
 
@@ -31,7 +32,7 @@ class ContactMail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'view.name',
+            view: 'Pages.Contact.contactMail',
         );
     }
 
@@ -39,11 +40,5 @@ class ContactMail extends Mailable
     public function attachments()
     {
         return [];
-    }
-
-
-    public function bulid()
-    {
-        return view('Emails.contact');
     }
 }

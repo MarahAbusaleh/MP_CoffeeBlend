@@ -65,8 +65,8 @@
                     <li class="nav-item @if (request()->is('about')) active @endif">
                         <a href="{{ url('/about') }}" class="nav-link">About</a>
                     </li>
-                    <li class="nav-item @if (request()->is('contact')) active @endif">
-                        <a href="{{ url('/contact') }}" class="nav-link">Contact</a>
+                    <li class="nav-item @if (request()->is('contact_us')) active @endif">
+                        <a href="{{ url('/contact_us') }}" class="nav-link">Contact</a>
                     </li>
                     <li class="nav-item cart">
                         <a href="{{ route('cart') }}" class="nav-link">

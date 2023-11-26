@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\HomeController;
@@ -90,10 +91,10 @@ Route::get('/about', function () {
 })->name('about');
 
 //Contact Us Page
-Route::get('/contact', function () {
+Route::get('/contact_us', function () {
     return view('Pages.contact');
 });
-
+Route::post('store-contact', [ContactMessageController::class, 'store'])->name('store.contact');
 //FallBack Route (404)
 // Route::fallback(function () {
 //     return view('Pages.404Error');

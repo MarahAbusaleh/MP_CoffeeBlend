@@ -106,6 +106,14 @@
                                 <span class="hide-menu">Comments</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ route('contact.index') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-message-share"></i>
+                                </span>
+                                <span class="hide-menu">Contact Messages</span>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
