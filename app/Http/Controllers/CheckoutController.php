@@ -21,8 +21,47 @@ class CheckoutController extends Controller
     }
 
 
-    public function submitCheckout(Request $request)
+    public function submitCash(Request $request, $discount)
     {
+        // dd($discount);
+        $total = Cart::subtotal() - $discount + 1;
+        $order = Order::create([
+            'address' => $request->input('address'),
+            'date' => Date::now(),
+            'user_id' => Auth::user()->id,
+            'status' => 'done',
+            'total' => $total,
+
+        ]);
+
+        foreach (Cart::content() as $cartItem) {
+
+            if ($cartItem->options->type == null) {
+                OrderItem::create([
+                    'order_id' => $order->id,
+                    'quantity' => $cartItem->qty,
+                    'price' => $cartItem->price,
+                    'product_id' => $cartItem->id,
+                ]);
+            } else {
+                OrderItem::create([
+                    'order_id' => $order->id,
+                    'quantity' => $cartItem->qty,
+                    'price' => $cartItem->price,
+                    'menu_id' => $cartItem->id,
+                ]);
+            }
+        }
+
+        Cart::destroy();
+        Alert::success('Your Order Submitted Successfully', 'Check Your Profile To Track It');
+
+        return redirect()->route('index');
+    }
+
+    public function submitCheckout(Request $request, $discount)
+    {
+        $total = Cart::subtotal() - $discount + 1;
         //PayPal
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
@@ -37,7 +76,7 @@ class CheckoutController extends Controller
                 [
                     "amount" => [
                         "currency_code" => "USD",
-                        "value" => Cart::subtotal()
+                        "value" => $total
                     ]
                 ]
             ]
@@ -46,7 +85,6 @@ class CheckoutController extends Controller
         if (isset($response['id']) && $response['id'] != null) {
             foreach ($response['links'] as $link) {
                 if ($link['rel'] === 'approve') {
-                    $cartTotal = Cart::subtotal();
 
                     session([
                         'paymentDetail' => [
@@ -54,7 +92,7 @@ class CheckoutController extends Controller
                             'date' => Date::now(),
                             'user_id' => Auth::user()->id,
                             'status' => 'In Shipping',
-                            'total' => $cartTotal,
+                            'total' => $total,
                         ]
                     ]);
 

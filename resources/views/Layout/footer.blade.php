@@ -71,6 +71,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&sensor=false"></script>
 <script src="{{ asset('js/google-map.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
+{{-- <script src="{{ asset('css/paypal.js') }}"></script> --}}
 
 {{-- <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/main2.js"></script> --}}

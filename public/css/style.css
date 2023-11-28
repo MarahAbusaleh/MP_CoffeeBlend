@@ -11189,7 +11189,7 @@ textarea.form-control {
 }
 
 .ftco-animate {
-    margin-bottom: 15%;
+    /* margin-bottom: 15%; */
     opacity: 0;
     visibility: hidden;
 }

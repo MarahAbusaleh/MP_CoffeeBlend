@@ -6,12 +6,42 @@ use App\DataTables\MenuDataTable;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use PDF;
 
 class MenuController extends Controller
 {
     public function index(MenuDataTable $dataTables)
     {
         return $dataTables->render('Admin.Pages.menu.index');
+    }
+
+
+    public function menuPDF()
+    {
+        $hotDrinks = Menu::where('type', 'hot')->get();
+        $coldDrinks = Menu::where('type', 'cold')->get();
+
+        view()->share('hotDrinks', $hotDrinks);
+        view()->share('coldDrinks', $coldDrinks);
+
+        $pdf = PDF::loadView('Pages.menuPDF');
+
+        return $pdf->stream();
+    }
+
+
+    public function show(Menu $menu)
+    {
+        $hotDrinks = Menu::where('type', 'hot')->get();
+        $coldDrinks = Menu::where('type', 'cold')->get();
+        return view('Pages.menu', compact('hotDrinks', 'coldDrinks'));
+    }
+
+    public function showMenuPDF(Menu $menu)
+    {
+        $hotDrinks = Menu::where('type', 'hot')->get();
+        $coldDrinks = Menu::where('type', 'cold')->get();
+        return view('Pages.menuPDF', compact('hotDrinks', 'coldDrinks'));
     }
 
 
@@ -51,13 +81,6 @@ class MenuController extends Controller
         return redirect()->route('menu.index');
     }
 
-
-    public function show(Menu $menu)
-    {
-        $hotDrinks = Menu::where('type', 'hot')->get();
-        $coldDrinks = Menu::where('type', 'cold')->get();
-        return view('Pages.menu', compact('hotDrinks', 'coldDrinks'));
-    }
 
     public function itemDetails($id)
     {

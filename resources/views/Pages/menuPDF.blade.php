@@ -70,13 +70,6 @@
                             </div>
                         @endforeach
                     </div>
-                    <div style="display: flex; justify-content: flex-end;">
-                        <a href="{{ route('menuPDF') }}" class="btn btn-primary p-3 px-xl-4 py-xl-3"
-                            style="margin-right: 5px;">
-                            Download the menu
-                        </a>
-                    </div>
-
 
                 </div>
             </div>

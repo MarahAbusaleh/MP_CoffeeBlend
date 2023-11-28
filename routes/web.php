@@ -28,7 +28,8 @@ Route::middleware('auth')->group(function () {
 
     /*----------------------------------------- CHECKOUT ------------------------------------------ */
     Route::get('/checkout/{discount}', [CheckoutController::class, 'index'])->name('checkout');
-    Route::post('/submitCheckout', [CheckoutController::class, 'submitCheckout'])->name('submitCheckout');
+    Route::post('/submitCheckout/{discount}', [CheckoutController::class, 'submitCheckout'])->name('submitCheckout');
+    Route::post('/submitCash/{discount}', [CheckoutController::class, 'submitCash'])->name('submitCash');
     Route::get('paypal/success', [CheckoutController::class, 'success'])->name('paypal_success');
     Route::get('paypal/cancel',  [CheckoutController::class, 'cancel'])->name('paypal_cancel');
     /*--------------------------------------- END CHECKOUT ---------------------------------------- */
@@ -49,6 +50,8 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 
 //Menu Page
 Route::get('/menuPage', [MenuController::class, 'show']);
+Route::get('/showMenuPDF', [MenuController::class, 'showMenuPDF'])->name('showMenuPDF');
+Route::get('/menuPage/pdf', [MenuController::class, 'menuPDF'])->name('menuPDF');
 
 //Show Menu Item Details
 Route::get('/itemDetails/{id}', [MenuController::class, 'itemDetails'])->name('itemDetails');
@@ -95,13 +98,13 @@ Route::get('/contact_us', function () {
     return view('Pages.contact');
 });
 Route::post('store-contact', [ContactMessageController::class, 'store'])->name('store.contact');
+
 //FallBack Route (404)
 // Route::fallback(function () {
 //     return view('Pages.404Error');
 // });
 
-
-/*------------ Login With google & Facebook ------------*/
+/*----------------------------------- Login With google & Facebook -----------------------------------*/
 
 Route::get('auth/google', [GoogleController::class, 'redirect'])->name('google-auth');
 Route::get('auth/google/call-back', [GoogleController::class, 'callbackGoogle']);
