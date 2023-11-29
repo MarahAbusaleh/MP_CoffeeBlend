@@ -33,6 +33,7 @@ Route::middleware(['admin', 'role:admin'])->group(function () {
     Route::resource('menu', MenuController::class);
 
     Route::resource('order', OrderController::class);
+    Route::post('order/export', 'OrderController@index');
 
     Route::resource('order_item', OrderItemController::class);
 

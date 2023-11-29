@@ -13,17 +13,19 @@
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                         <img id="showImage" class="rounded-circle" width="300px" src="{{ asset(Auth::user()->image) }}">
                     </div>
-                    <center>
-                        <div>
-                            <button id="updateButton" type="submit" href="#" class="btn btn-primary py-3 px-4"
-                                style="color: black !important">
-                                Update Password
-                                <span class="icon icon-edit"
-                                    style="color: black;
+                    @if (Auth::user()->google_id == null && Auth::user()->facebook_id == null)
+                        <center>
+                            <div>
+                                <button id="updateButton" type="submit" href="#" class="btn btn-primary py-3 px-4"
+                                    style="color: black !important">
+                                    Update Password
+                                    <span class="icon icon-edit"
+                                        style="color: black;
                             font-size: 20px"></span>
-                            </button>
-                        </div>
-                    </center>
+                                </button>
+                            </div>
+                        </center>
+                    @endif
                 </div>
                 @include('sweetalert::alert')
 
@@ -36,7 +38,7 @@
                                 <div class="col-md-12">
                                     <label class="labels">Name</label>
                                     <input type="text" class="form-control" placeholder="" name="name"
-                                        value="{{ Auth::user()->name }}">
+                                        value="{{ Auth::user()->name }}" @if (Auth::user()->google_id != null || Auth::user()->facebook_id != null) readonly @endif>
                                     @if ($errors->has('name'))
                                         <span class="text-danger">{{ $errors->first('name') }}</span>
                                     @endif
@@ -44,11 +46,12 @@
                                 <div class="col-md-12">
                                     <label class="labels">Email</label>
                                     <input type="text" class="form-control" placeholder="" name="email"
-                                        value="{{ Auth::user()->email }}">
+                                        value="{{ Auth::user()->email }}" @if (Auth::user()->google_id != null || Auth::user()->facebook_id != null) readonly @endif>
                                     @if ($errors->has('email'))
                                         <span class="text-danger">{{ $errors->first('email') }}</span>
                                     @endif
                                 </div>
+
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-6">
