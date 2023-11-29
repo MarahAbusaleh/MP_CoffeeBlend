@@ -2,7 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\OrderItemDataTable;
+use App\Models\OrderItem;
+use Illuminate\Database\Eloquent\Builder as QueryBuilder;
+use Yajra\DataTables\EloquentDataTable;
+use Yajra\DataTables\Html\Builder as HtmlBuilder;
+
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -11,78 +15,77 @@ use Yajra\DataTables\Services\DataTable;
 
 class OrderItemDataTable extends DataTable
 {
-    /**
-     * Build DataTable class.
-     *
-     * @param mixed $query Results from query() method.
-     * @return \Yajra\DataTables\DataTableAbstract
-     */
-    public function dataTable($query)
+    protected $orderId;
+
+    public function setorderId($orderId)
     {
-        return datatables()
-            ->eloquent($query)
-            ->addColumn('action', 'orderitemdatatable.action');
+        $this->orderId = $orderId;
+
+        return $this;
     }
 
-    /**
-     * Get query source of dataTable.
-     *
-     * @param \App\Models\OrderItemDataTable $model
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function query(OrderItemDataTable $model)
+    public function dataTable(QueryBuilder $query): EloquentDataTable
+    {
+        if (!is_null($this->orderId)) {
+            $query->where('order_id', $this->orderId);
+        }
+
+        return (new EloquentDataTable($query))
+            ->addColumn('product', function ($query) {
+                if ($query->product_id) {
+                    return $query->product->name;
+                } else {
+                    return '--NAN--';
+                }
+            })
+            ->addColumn('menu', function ($query) {
+                if ($query->menu_id) {
+                    return $query->menu->name;
+                } else {
+                    return '--NAN--';
+                }
+            })
+
+            ->setRowId('id');
+    }
+
+
+    public function query(OrderItem $model): QueryBuilder
     {
         return $model->newQuery();
     }
 
-    /**
-     * Optional method if you want to use html builder.
-     *
-     * @return \Yajra\DataTables\Html\Builder
-     */
-    public function html()
+
+    public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('orderitemdatatable-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    ->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->buttons(
-                        Button::make('create'),
-                        Button::make('export'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    );
+            ->setTableId('orderitem-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            ->dom('Bfrtip')
+            ->orderBy(1)
+            ->buttons(
+                Button::make('create'),
+                Button::make('export'),
+                Button::make('print'),
+                Button::make('reset'),
+                Button::make('reload')
+            );
     }
 
-    /**
-     * Get columns.
-     *
-     * @return array
-     */
-    protected function getColumns()
+
+    protected function getColumns(): array
     {
         return [
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            Column::make('product'),
+            Column::make('menu'),
+            Column::make('price'),
+            Column::make('quantity'),
         ];
     }
 
-    /**
-     * Get filename for export.
-     *
-     * @return string
-     */
-    protected function filename()
+
+    protected function filename(): string
     {
         return 'OrderItem_' . date('YmdHis');
     }

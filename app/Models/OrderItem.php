@@ -22,13 +22,13 @@ class OrderItem extends Model
     //With Product Model (M:1)
     public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class, 'product_id');
     }
 
     //With Menu Model (M:1)
     public function menu()
     {
-        return $this->belongsTo(Menu::class);
+        return $this->belongsTo(Menu::class, 'menu_id');
     }
 
     //With Order Model (M:1)

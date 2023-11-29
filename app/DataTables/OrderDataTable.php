@@ -19,7 +19,7 @@ class OrderDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
-                $showBtn = "<a href='" . route('order.show', $query->id) . "' class='btn btn-muted my-2 show-item'><i class='fas fa-eye'></i></a>";
+                $showBtn = "<a href='" . route('order_item.index', ['order_id' => $query->id]) . "' class='btn btn-muted my-2 show-item'><i class='fas fa-eye'></i></a>";
 
                 return $showBtn;
             })

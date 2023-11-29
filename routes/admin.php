@@ -7,6 +7,7 @@ use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Models\ContactMessage;
@@ -32,6 +33,8 @@ Route::middleware(['admin', 'role:admin'])->group(function () {
     Route::resource('menu', MenuController::class);
 
     Route::resource('order', OrderController::class);
+
+    Route::resource('order_item', OrderItemController::class);
 
     Route::resource('user', UserController::class);
 
