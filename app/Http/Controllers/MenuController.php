@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\DataTables\MenuDataTable;
 use App\Models\Menu;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use RealRashid\SweetAlert\Facades\Alert;
 use PDF;
 
@@ -18,15 +20,22 @@ class MenuController extends Controller
 
     public function menuPDF()
     {
-        $hotDrinks = Menu::where('type', 'hot')->get();
-        $coldDrinks = Menu::where('type', 'cold')->get();
+        try {
+            $hotDrinks = Menu::where('type', 'hot')->get();
+            $coldDrinks = Menu::where('type', 'cold')->get();
 
-        view()->share('hotDrinks', $hotDrinks);
-        view()->share('coldDrinks', $coldDrinks);
+            view()->share('hotDrinks', $hotDrinks);
+            view()->share('coldDrinks', $coldDrinks);
 
-        $pdf = PDF::loadView('Pages.menuPDF');
+            $pdf = PDF::loadView('Pages.menuPDF')->setPaper('a4', 'landscape')->setWarnings(false)->save('myfile.pdf');
 
-        return $pdf->stream();
+            return $pdf->stream();
+        } catch (Exception $e) {
+            // Log the exception to the Laravel log
+            Log::error($e->getMessage());
+            // You can also echo the error for immediate feedback during development
+            echo $e->getMessage();
+        }
     }
 
 

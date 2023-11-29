@@ -1,0 +1,24 @@
+{
+    "poppins": {
+        "300": "C:\\xampp\\htdocs\\MP_CoffeeBlend\\storage\\fonts\/poppins_300_999a4088f0da952988730996a4bec1d8",
+        "normal": "C:\\xampp\\htdocs\\MP_CoffeeBlend\\storage\\fonts\/poppins_normal_ee697d7869cb745ccf3ccccc013145ad",
+        "500": "C:\\xampp\\htdocs\\MP_CoffeeBlend\\storage\\fonts\/poppins_500_fce53b208cddccda1573b7620b579598",
+        "600": "C:\\xampp\\htdocs\\MP_CoffeeBlend\\storage\\fonts\/poppins_600_9623fbc18c38938c2057a9aae8390a42",
+        "bold": "poppins_bold_8fe618268f56b4b8f1e70e87a9e99fc0"
+    },
+    "boxicons": {
+        "normal": "boxicons_normal_29cb19fbfb90ef61e3b99f58d1084746"
+    },
+    "icons": {
+        "normal": "icons_normal_e38c20cc7b3329de51602e926bb3c305"
+    },
+    "ionicons": {
+        "normal": "ionicons_normal_ded6c34175418456528d87f554934d12"
+    },
+    "flaticon": {
+        "normal": "flaticon_normal_f15512d08983e05ba24620ecacff2ab0"
+    },
+    "icomoon": {
+        "normal": "icomoon_normal_97087e87267785748a1f08fe92af0d24"
+    }
+}

@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Menu;
+use App\Models\Order;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +23,12 @@ class AdminController extends Controller
 
     public function AdminDashboard()
     {
-        return view('Admin.Pages.index');
+        $orders = Order::get();
+        $products = Product::get();
+        $menus = Menu::get();
+        $users = User::get();
+
+        return view('Admin.Pages.index', compact('orders', 'products', 'menus', 'users'));
     }
 
 
