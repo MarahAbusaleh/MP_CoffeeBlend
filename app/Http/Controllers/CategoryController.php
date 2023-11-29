@@ -79,7 +79,7 @@ class CategoryController extends Controller
     {
         $categories = Category::all();
         $products = Product::where('category_id', $id)->get();
-        $allProducts = Product::get();
+        $allProducts = Product::latest()->paginate(3);
         return view('Pages.subcategories', compact('categories', 'products', 'allProducts'));
     }
 

@@ -65,6 +65,8 @@ Route::get('/showProducts/{id}', [CategoryController::class, 'showProducts'])->n
 //Show Product Details
 Route::get('/productDetails/{category_id}/{product_id}', [ProductController::class, 'show'])->name('productDetails');
 
+//Search Products
+Route::get('/search', [ProductController::class, 'searchProduct'])->name('search');
 
 /*--------------------------------------------- CART --------------------------------------------- */
 

@@ -10,12 +10,33 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use RealRashid\SweetAlert\Facades\Alert;
 
+use function PHPUnit\Framework\isEmpty;
+
 class ProductController extends Controller
 {
     public function index(ProductDataTable $dataTables)
     {
         return $dataTables->render('Admin.Pages.product.index');
     }
+
+
+    public function searchProduct(Request $request)
+    {
+        if ($request->search) {
+            $searchProduct = Product::where('name', 'LIKE', '%' . $request->search . '%')->latest()->paginate(3);
+            // dd($searchProduct->items());
+            if ($searchProduct->items() == []) {
+                Alert::error('There Is No Such This Product', '');
+                return redirect()->route('showProducts', 1);
+            } else {
+                return view('Pages.search', compact('searchProduct'));
+            }
+        } else {
+            Alert::error('error', 'Empty Search');
+            return redirect()->back();
+        }
+    }
+
 
     public function create()
     {

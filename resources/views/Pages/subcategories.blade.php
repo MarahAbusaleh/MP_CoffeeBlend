@@ -8,9 +8,21 @@
 
     <section class="ftco-menu mb-5 pb-5">
         <div class="container">
+            @include('sweetalert::alert')
+
             <div class="row d-md-flex">
                 <div class="col-lg-12 ftco-animate p-md-5" style="margin-bottom: 0px !important">
-                    <div class="row">
+                    <div class="row" style="justify-content: end !important;">
+                        <form role="search" action="{{ route('search') }}" method="GET" class="contact-form">
+                            <div class="form-group" style="display: flex; justify-content: end;">
+                                <input type="search" name="search" class="form-control"
+                                    value="{{ Request::get('search') }}" placeholder="Search Product">
+                                <button type="submit" style="margin-left: 5px;"
+                                    class="btn btn-primary btn-outline-primary">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </form>
                         <div class="col-md-12 nav-link-wrap mb-5">
                             <div class="nav ftco-animate nav-pills justify-content-center" id="v-pills-tab" role="tablist"
                                 aria-orientation="vertical"
@@ -86,7 +98,8 @@
                                                             class="menu-img img mb-4"
                                                             style="background-image: url('{{ asset($product->image) }}');"></a>
                                                         <div class="text">
-                                                            <h3><a href="product-single.html">{{ $product->name }}</a></h3>
+                                                            <h3><a href="product-single.html">{{ $product->name }}</a>
+                                                            </h3>
                                                             @if ($product->category->name == 'COFFEE BEANS')
                                                                 <p><span style="color: red;">*</span>Select</p>
                                                                 <div class="dropdown">
@@ -214,7 +227,11 @@
             </div>
         </div>
     </section>
-
+    <center>
+        <div style="padding-bottom: 10px; font-size: 14px; text-align: center; display: flex; justify-content: center;">
+            {{ $allProducts->appends(request()->input())->links() }}
+        </div>
+    </center>
     <!--//////////////////////////////////////// END Of Categories /////////////////////////////////////////-->
 
     <hr style="border-top: 1px solid gray;">
