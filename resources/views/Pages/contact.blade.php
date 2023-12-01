@@ -15,16 +15,16 @@
                             <h2 class="h4">Contact Information</h2>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <p><span>Address:</span> Irbid Abd Alhameed Sharaf Street</p>
+                            <p><span>Address:</span><a href="tel://1234567920"> Irbid Abd Alhameed Sharaf Street</a></p>
                         </div>
                         <div class="col-md-12 mb-3">
                             <p><span>Phone:</span> <a href="tel://1234567920">+962 7 9987 6142</a></p>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <p><span>Email:</span> <a href="mailto:info@yoursite.com">coffee.blend@gmail.com</a></p>
+                            <p><span>Email:</span> <a href="mailto:info@yoursite.com">coffeeblend.web@gmail.com</a></p>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <p><span>Website:</span> <a href="#">MarahAbusaleh.com</a></p>
+                            <p><span>Website:</span> <a href="#">www.coffeeblend.com</a></p>
                         </div>
                     </div>
                 </div>

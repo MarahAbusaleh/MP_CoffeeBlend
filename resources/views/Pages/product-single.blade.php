@@ -19,10 +19,6 @@
                     <p>
                         {{ $Item->description }}
                     </p>
-                    <div class="form-check mt-2">
-                        <input type="checkbox" class="form-check-input" id="writeNameOnCup">
-                        <label class="form-check-label" for="writeNameOnCup">Write my name on the cup</label>
-                    </div>
                     <br>
                     <p><a href="{{ route('addItemToCart', $Item->id) }}" class="btn btn-primary py-3 px-5">Add to Cart</a>
                     </p>

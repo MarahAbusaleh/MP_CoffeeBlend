@@ -72,8 +72,12 @@ class ProductController extends Controller
             'image' => $relativeImagePath,
         ]);
 
-        Alert::success('success', 'Product Added Successfully');
-        return redirect()->route('product.index');
+        $notification = array(
+            'message' => 'Product Added Successfully!!',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('product.index')->with($notification);
     }
 
 
@@ -115,8 +119,12 @@ class ProductController extends Controller
 
         Product::where('id', $id)->update($data);
 
-        Alert::success('success', 'Product Updated Successfully');
-        return redirect()->route('product.index');
+        $notification = array(
+            'message' => 'Product Updated Successfully!!',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('product.index')->with($notification);
     }
 
 

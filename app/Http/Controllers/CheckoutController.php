@@ -23,13 +23,19 @@ class CheckoutController extends Controller
 
     public function submitCash(Request $request, $discount)
     {
+        // Data Validate
+        $request->validate([
+            'mobile' => 'required|numeric',
+            'address' => 'required|string',
+        ]);
+
         // dd($discount);
         $total = Cart::subtotal() - $discount + 1;
         $order = Order::create([
             'address' => $request->input('address'),
             'date' => Date::now(),
             'user_id' => Auth::user()->id,
-            'status' => 'done',
+            'status' => 'In Shipping',
             'total' => $total,
 
         ]);
@@ -115,10 +121,10 @@ class CheckoutController extends Controller
 
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
             // Data Validate
-            // $request->validate([
-            //     'mobile' => 'required|numeric',
-            //     'address' => 'required|string',
-            // ]);
+            $request->validate([
+                'mobile' => 'required|numeric',
+                'address' => 'required|string',
+            ]);
 
             // $data = $request->except(['_method']);
 

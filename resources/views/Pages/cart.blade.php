@@ -77,9 +77,7 @@
                             <input type="text" name="coupon" class="coupon form-control input-number col-lg-8"
                                 min="0" max="100" style="margin-right: 5px">
                             <p>
-                                <button href="" class="btn btn-primary py-3 px-1 col-lg-12" type="submit">
-                                    Apply Coupon
-                                </button>
+                                <input type="submit" value=" Apply Coupon" class="btn btn-primary col-lg-12 py-3 px-1">
                             </p>
                         </div>
                     </form>

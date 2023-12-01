@@ -122,7 +122,15 @@
                                 <tr>
                                     <td>{{ $i }}</td>
                                     <td>{{ $order->address }}</td>
-                                    <td>{{ $order->status }}</td>
+                                    <td>
+                                        @if ($order->status == 'In Shipping')
+                                            <span class='InShipping'>In Shipping</span>
+                                        @elseif ($order->status == 'Done')
+                                            <span class='Done'>Done</span>
+                                        @elseif ($order->status == 'Canceled')
+                                            <span class='Canceled'>Canceled</span>
+                                        @endif
+                                    </td>
                                     <td>{{ $order->total }}</td>
                                     <td>
                                         <a href="{{ route('myOrders', $order->id) }}" class="nav-link">

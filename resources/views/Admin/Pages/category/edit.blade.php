@@ -18,9 +18,17 @@
                         <input type="text" class="form-control" id="name" name="name"
                             value="{{ $category->name }}">
                     </div>
-                    <div class="mb-3">
-                        <label for="image1" class="form-label">Image 1 :</label>
-                        <input type="file" class="form-control" id="image1" name="image1">
+                    <div class="row">
+                        <div class="col-xl-2">
+                            <div class="mb-5">
+                                <img id="showImage" width="100px"
+                                    src="{{ $category->image1 == '' ? url('no-image.jpg') : asset($category->image1) }}">
+                            </div>
+                        </div>
+                        <div class="col-xl-10">
+                            <label for="image1" class="form-label">Image 1 :</label>
+                            <input type="file" class="form-control" id="image" name="image1">
+                        </div>
                     </div>
                     {{-- <div class="mb-3">
                                 <label for="image2" class="form-label">Image 2 :</label>
@@ -39,5 +47,16 @@
     </div>
     </div>
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#image').change(function(e) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#showImage').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(e.target.files[0]);
+            })
+        });
+    </script>
 @endsection

@@ -86,8 +86,12 @@ class MenuController extends Controller
             'image' => $relativeImagePath,
         ]);
 
-        Alert::success('success', 'Item Added Successfully');
-        return redirect()->route('menu.index');
+        $notification = array(
+            'message' => 'Item Added Successfully!!',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('menu.index')->with($notification);
     }
 
 
@@ -128,9 +132,12 @@ class MenuController extends Controller
 
         Menu::where('id', $id)->update($data);
 
-        Alert::success('success', 'Item updated Successfully');
+        $notification = array(
+            'message' => 'Item Updated Successfully!!',
+            'alert-type' => 'success',
+        );
 
-        return redirect()->route('menu.index');
+        return redirect()->route('menu.index')->with($notification);
     }
 
 

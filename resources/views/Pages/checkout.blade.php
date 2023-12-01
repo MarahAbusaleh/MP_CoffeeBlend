@@ -40,6 +40,9 @@
                                     <label for="country">Phone Number</label>
                                     <input type="text" class="form-control" placeholder="" name="mobile"
                                         value="{{ Auth::user()->mobile }}" required />
+                                    @if ($errors->has('mobile'))
+                                        <span class="text-danger">{{ $errors->first('mobile') }}</span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="w-100"></div>
@@ -48,6 +51,9 @@
                                     <label for="streetaddress">Address</label>
                                     <input type="text" class="form-control" placeholder="" name="address"
                                         value="{{ Auth::user()->address }}" required />
+                                    @if ($errors->has('address'))
+                                        <span class="text-danger">{{ $errors->first('address') }}</span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="w-100"></div>

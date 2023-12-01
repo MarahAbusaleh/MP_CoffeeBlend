@@ -17,27 +17,12 @@
                     <br><br>
                     <h3>{{ $product->name }}</h3>
                     <p class="price"><span>{{ $product->price }} JOD</span></p>
+                    @if ($product->category->name == 'COFFEE BEANS')
+                        <p style="color: rgb(217, 54, 54)"> This Price is for 0.25 kg </p>
+                    @endif
                     <p>
                         {{ $product->description }}
                     </p>
-                    <div class="row mt-4">
-                        @if ($product->category->name == 'Coffee Beans')
-                            <div class="col-md-6">
-                                <div class="form-group d-flex">
-                                    <div class="select-wrap">
-                                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                        <select name="" id="" class="form-control">
-                                            <option value="">0.25 kg</option>
-                                            <option value="">0.5 kg</option>
-                                            <option value="">1.0 kg</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
-                        <div class="w-100"></div>
-
-                    </div>
                     <br>
                     <p><a href="{{ route('addProductToCart', $product->id) }}" class="btn btn-primary py-3 px-5">Add to
                             Cart</a></p>

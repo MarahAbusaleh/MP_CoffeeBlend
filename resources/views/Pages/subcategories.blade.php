@@ -52,29 +52,10 @@
                                                         class="menu-img img mb-4"
                                                         style="background-image: url('{{ asset($product->image) }}');"></a>
                                                     <div class="text">
-                                                        <h3><a href="product-single.html">{{ $product->name }}</a></h3>
-                                                        @if ($product->category->name == 'COFFEE BEANS')
-                                                            <p><span style="color: red;">*</span>Select</p>
-                                                            <div class="dropdown">
-                                                                <button
-                                                                    class="btn btn-primary btn-outline-primary dropdown-toggle"
-                                                                    type="button" id="weightDropdown"
-                                                                    data-toggle="dropdown" aria-haspopup="true"
-                                                                    aria-expanded="false">
-                                                                    Weight
-                                                                </button>
-                                                                <div class="dropdown-menu weigthdm"
-                                                                    aria-labelledby="weightDropdown">
-                                                                    <a class="dropdown-item weightdi" href="#">0.25
-                                                                        kg</a>
-                                                                    <a class="dropdown-item weightdi" href="#">0.5
-                                                                        kg</a>
-                                                                    <a class="dropdown-item weightdi" href="#">1
-                                                                        kg</a>
-                                                                </div>
-                                                            </div>
-                                                        @endif
-                                                        <p>{{ $product->description }}</p>
+                                                        <h3><a
+                                                                href="product-single.html">{{ Str::limit($product->name, 20) }}</a>
+                                                        </h3>
+                                                        <p>{{ Str::limit($product->description, 53) }}</p>
                                                         <p class="price" style="margin-top: 15px;">
                                                             <span>{{ $product->price }} JOD</span>
                                                         </p>
@@ -89,6 +70,9 @@
                                 {{-- ----------------------Coffee Beans---------------------- --}}
                                 <div class="tab-pane fade" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
                                     <div class="row">
+                                        @php
+                                            use Illuminate\Support\Str;
+                                        @endphp
                                         @foreach ($allProducts as $product)
                                             @if ($product->category->name == 'COFFEE BEANS')
                                                 <div class="col-lg-4 col-md-6 text-center">
@@ -98,32 +82,10 @@
                                                             class="menu-img img mb-4"
                                                             style="background-image: url('{{ asset($product->image) }}');"></a>
                                                         <div class="text">
-                                                            <h3><a href="product-single.html">{{ $product->name }}</a>
+                                                            <h3><a
+                                                                    href="product-single.html">{{ Str::limit($product->name, 20) }}</a>
                                                             </h3>
-                                                            @if ($product->category->name == 'COFFEE BEANS')
-                                                                <p><span style="color: red;">*</span>Select</p>
-                                                                <div class="dropdown">
-                                                                    <button
-                                                                        class="btn btn-primary btn-outline-primary dropdown-toggle"
-                                                                        type="button" id="weightDropdown"
-                                                                        data-toggle="dropdown" aria-haspopup="true"
-                                                                        aria-expanded="false">
-                                                                        Weight
-                                                                    </button>
-                                                                    <div class="dropdown-menu weigthdm"
-                                                                        aria-labelledby="weightDropdown">
-                                                                        <a class="dropdown-item weightdi"
-                                                                            href="#">0.25
-                                                                            kg</a>
-                                                                        <a class="dropdown-item weightdi"
-                                                                            href="#">0.5
-                                                                            kg</a>
-                                                                        <a class="dropdown-item weightdi" href="#">1
-                                                                            kg</a>
-                                                                    </div>
-                                                                </div>
-                                                            @endif
-                                                            <p>{{ $product->description }}</p>
+                                                            <p>{{ Str::limit($product->description, 53) }}</p>
                                                             <p class="price" style="margin-top: 15px;">
                                                                 <span>{{ $product->price }} JOD</span>
                                                             </p>
@@ -137,8 +99,7 @@
                                     </div>
                                 </div>
                                 {{-- ----------------------Cups & Mugs---------------------- --}}
-                                <div class="tab-pane fade" id="v-pills-2" role="tabpanel"
-                                    aria-labelledby="v-pills-2-tab">
+                                <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
                                     <div class="row">
                                         @foreach ($allProducts as $product)
                                             @if ($product->category->name == 'CUPS & MUGS')
@@ -149,9 +110,10 @@
                                                             class="menu-img img mb-4"
                                                             style="background-image: url('{{ asset($product->image) }}');"></a>
                                                         <div class="text">
-                                                            <h3><a href="product-single.html">{{ $product->name }}</a>
+                                                            <h3><a
+                                                                    href="product-single.html">{{ Str::limit($product->name, 20) }}</a>
                                                             </h3>
-                                                            <p>{{ $product->description }}</p>
+                                                            <p>{{ Str::limit($product->description, 53) }}</p>
                                                             <p class="price" style="margin-top: 15px;">
                                                                 <span>{{ $product->price }} JOD</span>
                                                             </p>
@@ -177,9 +139,10 @@
                                                             class="menu-img img mb-4"
                                                             style="background-image: url('{{ asset($product->image) }}');"></a>
                                                         <div class="text">
-                                                            <h3><a href="product-single.html">{{ $product->name }}</a>
+                                                            <h3><a
+                                                                    href="product-single.html">{{ Str::limit($product->name, 20) }}</a>
                                                             </h3>
-                                                            <p>{{ $product->description }}</p>
+                                                            <p>{{ Str::limit($product->description, 53) }}</p>
                                                             <p class="price" style="margin-top: 15px;">
                                                                 <span>{{ $product->price }} JOD</span>
                                                             </p>
@@ -205,9 +168,10 @@
                                                             class="menu-img img mb-4"
                                                             style="background-image: url('{{ asset($product->image) }}');"></a>
                                                         <div class="text">
-                                                            <h3><a href="product-single.html">{{ $product->name }}</a>
+                                                            <h3><a
+                                                                    href="product-single.html">{{ Str::limit($product->name, 20) }}</a>
                                                             </h3>
-                                                            <p>{{ $product->description }}</p>
+                                                            <p>{{ Str::limit($product->description, 53) }}</p>
                                                             <p class="price" style="margin-top: 15px;">
                                                                 <span>{{ $product->price }} JOD</span>
                                                             </p>
@@ -229,7 +193,7 @@
     </section>
     <center>
         <div style="padding-bottom: 10px; font-size: 14px; text-align: center; display: flex; justify-content: center;">
-            {{ $allProducts->appends(request()->input())->links() }}
+            {{ $products->appends(request()->input())->links() }}
         </div>
     </center>
     <!--//////////////////////////////////////// END Of Categories /////////////////////////////////////////-->

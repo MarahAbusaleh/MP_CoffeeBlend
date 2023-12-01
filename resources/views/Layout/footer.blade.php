@@ -11,17 +11,17 @@
                 </ul>
             </div>
             <div class="footer-col col-lg-2 col-md-6 col-sm-6">
-                <h4>get help</h4>
+                <h4>Uesfull Links</h4>
                 <ul>
-                    <li><a href="#">Shipping</a></li>
-                    <li><a href="#">Order status</a></li>
-                    <li><a href="#">Payment options</a></li>
+                    <li><a href="{{ url('/') }}">Home</a></li>
+                    <li><a href="{{ route('about') }}">About</a></li>
+                    <li><a href="{{ route('contact_us') }}">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-col col-lg-3 col-md-4 col-sm-6">
                 <h4>Contact Us</h4>
                 <ul>
-                    <li><a href="#">marah.abusaleh12@gmail.com</a></li>
+                    <li><a href="#">coffee.blend@gmail.com</a></li>
                     <li><a href="#">+962 7 9987 6142</a></li>
                 </ul>
             </div>

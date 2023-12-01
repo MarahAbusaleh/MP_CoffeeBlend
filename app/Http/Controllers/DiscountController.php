@@ -36,8 +36,12 @@ class DiscountController extends Controller
             'discount_per' => $request->input('discount_per'),
         ]);
 
-        Alert::success('success', 'Item Added Successfully');
-        return redirect()->route('discount.index');
+        $notification = array(
+            'message' => 'Discount Added Successfully!!',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('discount.index')->with($notification);
     }
 
 
@@ -61,9 +65,12 @@ class DiscountController extends Controller
 
         Discount::where('id', $id)->update($data);
 
-        Alert::success('success', 'Discount updated Successfully');
+        $notification = array(
+            'message' => 'Discount Updated Successfully!!',
+            'alert-type' => 'success',
+        );
 
-        return redirect()->route('discount.index');
+        return redirect()->route('discount.index')->with($notification);
     }
 
 

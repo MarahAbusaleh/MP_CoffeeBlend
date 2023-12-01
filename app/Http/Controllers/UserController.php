@@ -109,8 +109,12 @@ class UserController extends Controller
             'image' => $relativeImagePath
         ]);
 
-        Alert::success('success', 'User Added Successfully');
-        return redirect()->route('user.index');
+        $notification = array(
+            'message' => 'User Added Successfully!!',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('user.index')->with($notification);
     }
 
 
@@ -147,9 +151,13 @@ class UserController extends Controller
         }
 
         User::where('id', $id)->update($data);
-        Alert::success('success', 'User Updated Successfully');
 
-        return redirect()->route('user.index');
+        $notification = array(
+            'message' => 'User Updated Successfully!!',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('user.index')->with($notification);
     }
 
 

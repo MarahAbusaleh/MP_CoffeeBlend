@@ -98,7 +98,7 @@ Route::get('/about', function () {
 //Contact Us Page
 Route::get('/contact_us', function () {
     return view('Pages.contact');
-});
+})->name('contact_us');
 Route::post('store-contact', [ContactMessageController::class, 'store'])->name('store.contact');
 
 //FallBack Route (404)

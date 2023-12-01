@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="row">
-                    <div class="col-md-6 col-lg-6 d-flex justify-content-center counter-wrap ftco-animate">
+                    <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
                         <div class="block-18 text-center">
                             <div class="text">
                                 <div class="icon">
@@ -17,7 +17,29 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-6 d-flex justify-content-center counter-wrap ftco-animate">
+                    <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="text">
+                                <div class="icon">
+                                    <span class="flaticon-coffee-cup"></span>
+                                </div>
+                                <strong class="number" data-number="{{ $productsCount }}">0</strong>
+                                <span>Products</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="text">
+                                <div class="icon">
+                                    <span class="flaticon-coffee-cup"></span>
+                                </div>
+                                <strong class="number" data-number="{{ $productsCount }}">0</strong>
+                                <span>Menus</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
                         <div class="block-18 text-center">
                             <div class="text">
                                 <div class="icon">

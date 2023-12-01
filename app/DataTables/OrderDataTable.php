@@ -19,20 +19,27 @@ class OrderDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
+                $editBtn = "<a href='" . route('order.edit', $query->id) . "' class='btn btn-success'><i class='far fa-edit'></i></a>";
                 $showBtn = "<a href='" . route('order_item.index', ['order_id' => $query->id]) . "' class='btn btn-muted my-2 show-item'><i class='fas fa-eye'></i></a>";
 
-                return $showBtn;
+                return $editBtn . $showBtn;
             })
 
-            // ->addColumn('total', function ($query) {
-            //     return $query->cart->total;
-            // })
+            ->addColumn('status', function ($query) {
+                if ($query->status == 'In Shipping') {
+                    return "<span class='InShipping'>In Shipping</span>";
+                } elseif ($query->status == 'Done') {
+                    return "<span class='Done'>Done</span>";
+                } elseif ($query->status == 'Canceled') {
+                    return "<span class='Canceled'>Canceled</span>";
+                }
+            })
 
             ->addColumn('user name', function ($query) {
                 return $query->user->name;
             })
 
-            ->rawColumns(['action', 'image'])
+            ->rawColumns(['action', 'image', 'status'])
             ->setRowId('id');
     }
 

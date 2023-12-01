@@ -15,7 +15,7 @@ class ProductSeeder extends Seeder
             // COFFEE BEANS Category
             [
                 'name' => 'Dark Coffee',
-                'description' => 'Experience the pure and intense essence of turkish coffee',
+                'description' => 'Indulge in the rich and robust experience of our DARK COFFEE blend at CoffeeBlen. Savor the intense and full-bodied flavor profile, crafted from premium Arabica beans carefully roasted to perfection. This bold blend offers a satisfyingly deep and aromatic cup, with notes of dark chocolate and a hint of smokiness. Elevate your coffee ritual with our DARK COFFEE, designed for those who appreciate a strong and invigorating brew. Immerse yourself in the velvety texture and irresistible complexity that defines this exceptional blend.',
                 'image' => 'images/Dark_Coffee.png',
                 'price' => '4',
                 'category_id' => '1'
@@ -58,29 +58,29 @@ class ProductSeeder extends Seeder
             // MACHINES Category
             [
                 'name' => 'American Coffee Machine',
-                'description' => 'Experience the perfect balance of convenience and flavor with our American 5-cup coffeemaker, delivering rich and aromatic coffee with every brew.',
-                'image' => 'images/machien1.png',
-                'price' => '25',
+                'description' => '"Introducing our American Coffee Machine at CoffeeBlen – the perfect addition to your home or office! Craft your favorite brew effortlessly with this sleek and user-friendly appliance. Designed for simplicity and speed, our machine ensures a rich and aromatic cup of American coffee with just the touch of a button. Experience the joy of freshly brewed coffee in the comfort of your space. With advanced features and a modern design, our American Coffee Machine elevates your coffee experience, making every sip a delightful moment. Elevate your mornings with CoffeeBlen – where convenience meets exceptional flavor!"',
+                'image' => 'images/m1.png',
+                'price' => '35',
                 'category_id' => '2'
             ],
             [
                 'name' => 'Turkish Coffee Machine',
                 'description' => 'Experience the fusion of modern convenience and authentic taste Automatic Turkish Coffee Maker, crafting 5 cups of rich delight in Black/Copper.',
-                'image' => 'images/machien2.png',
+                'image' => 'images/m2.png',
                 'price' => '50',
                 'category_id' => '2'
             ],
             [
                 'name' => 'Coffee Espresso and Cappuccino Machine',
                 'description' => 'Indulge in barista-quality espressos and cappuccinos with the Mr. Coffee Espresso and Cappuccino Machine.',
-                'image' => 'images/machien3.png',
+                'image' => 'images/m3.png',
                 'price' => '90',
                 'category_id' => '2'
             ],
             // CUPS & MUGS Category
             [
                 'name' => 'Earthen Pottery Mug',
-                'description' => 'Sip serenity from an Earthen Pottery Mug, connecting you with rustic elegance.',
+                'description' => 'Experience the rustic charm of our Earthen Pottery Mug at CoffeeBlen. Handcrafted with care, each mug showcases a unique blend of earthy tones and textures, adding warmth to your coffee ritual. The sturdy, ergonomic design ensures a comfortable grip, enhancing your sipping pleasure. Elevate your coffee experience with this artisanal piece, perfect for enjoying your favorite blends. Crafted from natural materials, our Earthen Pottery Mug embodies sustainability and style, making it an eco-friendly choice for your daily brew. Bring a touch of nature to your coffee moments with this timeless, one-of-a-kind pottery mug.',
                 'image' => 'images/cup1.jpeg',
                 'price' => '6',
                 'category_id' => '3'
@@ -113,17 +113,17 @@ class ProductSeeder extends Seeder
                 'price' => '7',
                 'category_id' => '3'
             ],
-            [
-                'name' => 'Beige Ceramic Cup and Saucer',
-                'description' => 'Crafted with exquisite attention to detail, our ceramic cup seamlessly combines.',
-                'image' => 'images/cup6.jpeg',
-                'price' => '8',
-                'category_id' => '3'
-            ],
+            // [
+            //     'name' => 'Beige Ceramic Cup and Saucer',
+            //     'description' => 'Crafted with exquisite attention to detail, our ceramic cup seamlessly combines.',
+            //     'image' => 'images/cup6.jpeg',
+            //     'price' => '8',
+            //     'category_id' => '3'
+            // ],
             // EQUIPMENT Category
             [
                 'name' => 'Storage Drawer Holder for Capsules',
-                'description' => 'Organize your Nespresso OriginalLine capsules in style with the DecoBros Crystal Tempered Glass Storage Drawer Holder, combining.',
+                'description' => 'Introducing our sleek Storage Drawer Holder for Capsules – the perfect blend of style and functionality for coffee enthusiasts. Elevate your coffee experience with this space-saving solution, designed to neatly organize and display your favorite coffee capsules. Crafted with premium materials, this drawer exudes modern elegance, seamlessly fitting into any kitchen decor. With its user-friendly design, accessing your capsules has never been more convenient.',
                 'image' => 'images/eqq1.png',
                 'price' => '15',
                 'category_id' => '4'
@@ -131,7 +131,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Black Espresso Steaming Pitcher',
                 'description' => 'Achieve barista-level perfection with the Apexstone 20 oz Black Espresso Steaming Pitcher, designed for expert milk frothing and frothing.',
-                'image' => 'images/eqq2.png',
+                'image' => 'images/eqq.png',
                 'price' => '8',
                 'category_id' => '4'
             ],

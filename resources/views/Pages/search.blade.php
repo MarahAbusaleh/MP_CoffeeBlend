@@ -7,6 +7,9 @@
     <!---------------------------------------------- Categories --------------------------------------------->
 
     <section class="ftco-menu mb-5 pb-5">
+        @php
+            use Illuminate\Support\Str;
+        @endphp
         <div class="container">
             @include('sweetalert::alert')
             <div class="row d-md-flex">
@@ -52,28 +55,8 @@
                                                         style="background-image: url('{{ asset($product->image) }}');"></a>
                                                     <div class="text">
                                                         <h3><a href="product-single.html">{{ $product->name }}</a></h3>
-                                                        @if ($product->category->name == 'COFFEE BEANS')
-                                                            <p><span style="color: red;">*</span>Select</p>
-                                                            <div class="dropdown">
-                                                                <button
-                                                                    class="btn btn-primary btn-outline-primary dropdown-toggle"
-                                                                    type="button" id="weightDropdown"
-                                                                    data-toggle="dropdown" aria-haspopup="true"
-                                                                    aria-expanded="false">
-                                                                    Weight
-                                                                </button>
-                                                                <div class="dropdown-menu weigthdm"
-                                                                    aria-labelledby="weightDropdown">
-                                                                    <a class="dropdown-item weightdi" href="#">0.25
-                                                                        kg</a>
-                                                                    <a class="dropdown-item weightdi" href="#">0.5
-                                                                        kg</a>
-                                                                    <a class="dropdown-item weightdi" href="#">1
-                                                                        kg</a>
-                                                                </div>
-                                                            </div>
-                                                        @endif
-                                                        <p>{{ $product->description }}</p>
+
+                                                        <p>{{ Str::limit($product->description, 53) }}</p>
                                                         <p class="price" style="margin-top: 15px;">
                                                             <span>{{ $product->price }} JOD</span>
                                                         </p>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Menu;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,9 @@ class HomeController extends Controller
 
         $adminCount = User::where('role', 'admin')->count();
         $userCount = User::where('role', 'user')->count();
+        $productsCount = Product::count();
+        $menusCount = Menu::count();
         $categories = Category::all();
-        return view('Pages.Home.index', compact('hotItems', 'coldItems', 'adminCount', 'userCount', 'categories'));
+        return view('Pages.Home.index', compact('hotItems', 'coldItems', 'adminCount', 'userCount', 'categories', 'productsCount', 'menusCount'));
     }
 }

@@ -64,7 +64,7 @@
                                         <span class="price">{{ $cold->price }} JOD</span>
                                     </div>
                                     <div class="d-block">
-                                        <p>{{ $cold->description }}</p>
+                                        <p>{{ Str::limit($cold->description, 53) }}</p>
                                     </div>
                                 </div>
                             </div>

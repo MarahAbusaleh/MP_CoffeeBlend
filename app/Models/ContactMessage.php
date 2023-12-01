@@ -26,7 +26,7 @@ class ContactMessage extends Model
 
         static::created(function ($item) {
 
-            $adminEmail = "marah.abusaleh12@gmail.com";
+            $adminEmail = "coffeeblend.web@gmail.com";
             Mail::to($adminEmail)->send(new ContactMail($item));
         });
     }

@@ -14,7 +14,7 @@
                     <div>
                         <div class="row" style=" margin-right: 0px;">
                             @foreach ($categories as $category)
-                                <div class="col-lg-3" style="border: 1px solid gray; margin: 0px;">
+                                <div class="col-lg-3 col-md-6 col-sm-12" style="border: 1px solid gray; margin: 0px;">
                                     <div class="">
                                         <div class="text text-center pt-4">
                                             <div>
