@@ -1,12 +1,12 @@
 @extends('Admin.Layouts.master')
-@section('title', 'Comments')
+@section('title', 'Reviews')
 @section('content')
 
     @include('sweetalert::alert')
     <div class="container-fluid">
         <!--  Row 1 -->
         <div class="row">
-            <h2>Comments</h2>
+            <h2>Reviews</h2>
         </div>
         <!--  Row 2 -->
         <div class="row">

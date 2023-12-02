@@ -127,8 +127,6 @@
                                             <span class='InShipping'>In Shipping</span>
                                         @elseif ($order->status == 'Done')
                                             <span class='Done'>Done</span>
-                                        @elseif ($order->status == 'Canceled')
-                                            <span class='Canceled'>Canceled</span>
                                         @endif
                                     </td>
                                     <td>{{ $order->total }}</td>

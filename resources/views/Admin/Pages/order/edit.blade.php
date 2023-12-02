@@ -20,7 +20,6 @@
                             <select id="status" name="status" class="form-control">
                                 <option value="">Edit Order Status</option>
                                 <option value="In Shipping">In Shipping</option>
-                                <option value="Canceled">Canceled</option>
                                 <option value="Done">Done</option>
                             </select>
                         </div>

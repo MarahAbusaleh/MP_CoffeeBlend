@@ -27,7 +27,7 @@ class DiscountController extends Controller
     {
         // Data Validate
         $request->validate([
-            'discount_code' => ['required', 'max:20', 'unique:discount'],
+            'discount_code' => ['required', 'unique:discount'],
             'discount_per' => ['required', 'numeric', 'min:0'],
         ]);
 
@@ -56,7 +56,7 @@ class DiscountController extends Controller
     {
         // Data Validate
         $request->validate([
-            'discount_code' => ['required', 'max:20', 'unique:discount'],
+            'discount_code' => ['required', 'unique:discount'],
             'discount_per' => ['required', 'numeric', 'min:0'],
         ]);
 

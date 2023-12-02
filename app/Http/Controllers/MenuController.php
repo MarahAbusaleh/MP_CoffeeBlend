@@ -64,7 +64,7 @@ class MenuController extends Controller
     {
         // Data Validate
         $request->validate([
-            'name' => ['required', 'max:20'],
+            'name' => ['required'],
             'price' => ['required', 'numeric', 'min:0'],
             'description' => ['required', 'string'],
             'type' => ['required'],
@@ -114,7 +114,7 @@ class MenuController extends Controller
     {
         // Data Validate
         $request->validate([
-            'name' => ['required', 'max:20'],
+            'name' => ['required'],
             'price' => ['required', 'numeric', 'min:0'],
             'description' => ['required', 'string'],
             'image' => ['image', 'max:4192'],

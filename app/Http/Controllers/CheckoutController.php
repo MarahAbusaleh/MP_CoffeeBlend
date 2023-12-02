@@ -67,6 +67,12 @@ class CheckoutController extends Controller
 
     public function submitCheckout(Request $request, $discount)
     {
+        // Data Validate
+        $request->validate([
+            'mobile' => 'required|numeric',
+            'address' => 'required|string',
+        ]);
+
         $total = Cart::subtotal() - $discount + 1;
         //PayPal
         $provider = new PayPalClient;
@@ -120,11 +126,6 @@ class CheckoutController extends Controller
         $payment = session('paymentDetail');
 
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
-            // Data Validate
-            $request->validate([
-                'mobile' => 'required|numeric',
-                'address' => 'required|string',
-            ]);
 
             // $data = $request->except(['_method']);
 

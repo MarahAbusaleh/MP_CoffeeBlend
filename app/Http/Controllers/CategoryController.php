@@ -27,7 +27,7 @@ class CategoryController extends Controller
     {
         // Data Validate
         $request->validate([
-            'name' => ['required', 'max:20'],
+            'name' => ['required'],
             'image1' => ['required', 'image', 'max:4192'],
         ]);
 
@@ -80,7 +80,7 @@ class CategoryController extends Controller
     {
         // Data Validate
         $request->validate([
-            'name' => ['required', 'max:20'],
+            'name' => ['required'],
             'image1' => ['image', 'max:4192'],
         ]);
 

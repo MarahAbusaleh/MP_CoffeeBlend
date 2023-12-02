@@ -30,8 +30,6 @@ class OrderDataTable extends DataTable
                     return "<span class='InShipping'>In Shipping</span>";
                 } elseif ($query->status == 'Done') {
                     return "<span class='Done'>Done</span>";
-                } elseif ($query->status == 'Canceled') {
-                    return "<span class='Canceled'>Canceled</span>";
                 }
             })
 

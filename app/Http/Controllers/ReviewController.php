@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\ReviewDataTable;
 use App\Models\Review;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
 
-    public function index()
+    public function index(ReviewDataTable $dataTables)
     {
-        //
+        return $dataTables->render('Admin.Pages.review.index');
     }
 
 
@@ -44,8 +45,11 @@ class ReviewController extends Controller
     }
 
 
-    public function destroy(Review $review)
+    public function destroy($id)
     {
-        //
+        $review = Review::findOrFail($id);
+        $review->delete();
+
+        return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
 }

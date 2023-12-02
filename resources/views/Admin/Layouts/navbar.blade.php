@@ -109,11 +109,11 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('comment.index') }}" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ route('review.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-messages"></i>
                                 </span>
-                                <span class="hide-menu">Comments</span>
+                                <span class="hide-menu">Reviews</span>
                             </a>
                         </li>
                         <li class="sidebar-item">

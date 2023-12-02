@@ -30,7 +30,7 @@ class UserController extends Controller
     {
         // Data Validate
         $request->validate([
-            'name' => ['required', 'max:20'],
+            'name' => ['required'],
             'email' => ['required', 'email'],
             'mobile' => ['required', 'string', 'regex:/^07\d{8}$/'],
             'address' => ['required', 'string'],
@@ -76,7 +76,7 @@ class UserController extends Controller
     {
         // Data Validate
         $request->validate([
-            'name' => ['required', 'max:20'],
+            'name' => ['required'],
             'email' => ['email'],
             'mobile' => ['string', 'regex:/^07\d{8}$/'],
             'address' => ['string'],
