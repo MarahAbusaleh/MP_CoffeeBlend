@@ -77,7 +77,7 @@ class UserController extends Controller
         // Data Validate
         $request->validate([
             'name' => ['required'],
-            'email' => ['email'],
+            'email' => ['email', 'unique:users,email'],
             'mobile' => ['string', 'regex:/^07\d{8}$/'],
             'address' => ['string'],
             'role' => ['required'],

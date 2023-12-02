@@ -25,7 +25,7 @@
                                 </button>
                             </div>
                         </form>
-                        <div class="col-md-12 nav-link-wrap mb-5">
+                        {{-- <div class="col-md-12 nav-link-wrap mb-5">
                             <div class="nav ftco-animate nav-pills justify-content-center" id="v-pills-tab" role="tablist"
                                 aria-orientation="vertical"
                                 style="width: 110%; margin-right: 50px; margin-left: -50px; margin-bottom: 0px !important">
@@ -38,7 +38,7 @@
                                 <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab"
                                     aria-controls="v-pills-4" aria-selected="false">MACHINES</a>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="col-md-12 d-flex align-items-center">
                             <div class="tab-content ftco-animate" id="v-pills-tabContent"
@@ -54,7 +54,9 @@
                                                         class="menu-img img mb-4"
                                                         style="background-image: url('{{ asset($product->image) }}');"></a>
                                                     <div class="text">
-                                                        <h3><a href="product-single.html">{{ $product->name }}</a></h3>
+                                                        <h3><a
+                                                                href="product-single.html">{{ Str::limit($product->name, 20) }}</a>
+                                                        </h3>
 
                                                         <p>{{ Str::limit($product->description, 53) }}</p>
                                                         <p class="price" style="margin-top: 15px;">
