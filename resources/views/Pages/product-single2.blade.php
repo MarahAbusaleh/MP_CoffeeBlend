@@ -134,6 +134,9 @@
                     <h2 class="mb-4">Related Products</h2>
                 </div>
             </div>
+            @php
+                use Illuminate\Support\Str;
+            @endphp
             <div class="row">
                 @foreach ($Items as $item)
                     <div class="col-lg-3 col-md-6">
@@ -141,22 +144,8 @@
                             <a href="#" class="img"
                                 style="background-image: url('{{ asset($item->image) }}');"></a>
                             <div class="text text-center pt-4">
-                                <h3><a href="product-single.html">{{ $item->name }}</a></h3>
-                                @if ($item->category->name == 'Coffee Beans')
-                                    <p><span style="color: red;">*</span>Select</p>
-                                    <div class="dropdown">
-                                        <button class="btn btn-primary btn-outline-primary dropdown-toggle" type="button"
-                                            id="weightDropdown" data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">
-                                            Weight
-                                        </button>
-                                        <div class="dropdown-menu weigthdm" aria-labelledby="weightDropdown">
-                                            <a class="dropdown-item weightdi" href="#">0.25 kg</a>
-                                            <a class="dropdown-item weightdi" href="#">0.5 kg</a>
-                                            <a class="dropdown-item weightdi" href="#">1 kg</a>
-                                        </div>
-                                    </div>
-                                @endif
+                                <h3><a href="product-single.html">{{ Str::limit($item->name, 20) }}</a></h3>
+
                                 <p class="price" style="margin-top: 15px;"><span>{{ $item->price }} JOD</span></p>
                                 <p><a href="{{ route('addProductToCart', $item->id) }}" class="btn btn-primary">Add to
                                         Cart</a></p>

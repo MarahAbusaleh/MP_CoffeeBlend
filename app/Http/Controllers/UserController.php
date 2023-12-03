@@ -105,6 +105,7 @@ class UserController extends Controller
             'email' => $request->input('email'),
             'mobile' => $request->input('mobile'),
             'address' => $request->input('address'),
+            'password' => '123456',
             'role' => $roleValue,
             'image' => $relativeImagePath
         ]);
